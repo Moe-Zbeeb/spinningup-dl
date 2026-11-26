@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 390" role="img" aria-labelledby="t d">
+<title id="t">An inception module</title>
+<desc id="d">The previous activation feeds four parallel branches: a 1 by 1 convolution; a 1 by 1 convolution followed by a 3 by 3 convolution; a 1 by 1 convolution followed by a 5 by 5 convolution; and a 3 by 3 max pool followed by a 1 by 1 convolution. Their outputs are concatenated along the channels.</desc>
+<rect x="10" y="170" width="150" height="60" rx="8" fill="#ffffff" stroke="#404452" stroke-width="1.8"/>
+<text x="85.0" y="187.9" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" fill="#000" text-anchor="middle">previous</text>
+<text x="85.0" y="204.9" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" fill="#000" text-anchor="middle">activation</text>
+<text x="85.0" y="221.9" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" fill="#000" text-anchor="middle">28 × 28 × 192</text>
+<line x1="160" y1="200" x2="230.5" y2="61.9" stroke="#404452" stroke-width="1.8"/>
+<path d="M235.0 53.0 L234.9 64.2 L226.0 59.6 z" fill="#404452"/>
+<rect x="240" y="30" width="340" height="46" rx="8" fill="#eef6fb" stroke="#404452" stroke-width="1.8"/>
+<text x="410.0" y="58.2" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" fill="#000" text-anchor="middle">1 × 1 conv, 64</text>
+<line x1="580" y1="53" x2="650.5" y2="191.1" stroke="#404452" stroke-width="1.8"/>
+<path d="M655.0 200.0 L646.0 193.4 L654.9 188.8 z" fill="#404452"/>
+<line x1="160" y1="200" x2="227.0" y2="149.1" stroke="#404452" stroke-width="1.8"/>
+<path d="M235.0 143.0 L230.1 153.0 L224.0 145.1 z" fill="#404452"/>
+<rect x="240" y="120" width="150" height="46" rx="8" fill="#fbeef2" stroke="#404452" stroke-width="1.8"/>
+<text x="315.0" y="147.9" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" fill="#000" text-anchor="middle">1 × 1 conv, 96</text>
+<line x1="390" y1="143" x2="420.0" y2="143.0" stroke="#404452" stroke-width="1.8"/>
+<path d="M430.0 143.0 L420.0 148.0 L420.0 138.0 z" fill="#404452"/>
+<rect x="430" y="120" width="150" height="46" rx="8" fill="#eef6fb" stroke="#404452" stroke-width="1.8"/>
+<text x="505.0" y="147.9" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" fill="#000" text-anchor="middle">3 × 3 conv, 128</text>
+<line x1="580" y1="143" x2="647.0" y2="193.9" stroke="#404452" stroke-width="1.8"/>
+<path d="M655.0 200.0 L644.0 197.9 L650.1 190.0 z" fill="#404452"/>
+<line x1="160" y1="200" x2="225.8" y2="229.0" stroke="#404452" stroke-width="1.8"/>
+<path d="M235.0 233.0 L223.8 233.5 L227.9 224.4 z" fill="#404452"/>
+<rect x="240" y="210" width="150" height="46" rx="8" fill="#fbeef2" stroke="#404452" stroke-width="1.8"/>
+<text x="315.0" y="237.9" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" fill="#000" text-anchor="middle">1 × 1 conv, 16</text>
+<line x1="390" y1="233" x2="420.0" y2="233.0" stroke="#404452" stroke-width="1.8"/>
+<path d="M430.0 233.0 L420.0 238.0 L420.0 228.0 z" fill="#404452"/>
+<rect x="430" y="210" width="150" height="46" rx="8" fill="#eef6fb" stroke="#404452" stroke-width="1.8"/>
+<text x="505.0" y="237.9" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" fill="#000" text-anchor="middle">5 × 5 conv, 32</text>
+<line x1="580" y1="233" x2="645.8" y2="204.0" stroke="#404452" stroke-width="1.8"/>
+<path d="M655.0 200.0 L647.9 208.6 L643.8 199.5 z" fill="#404452"/>
+<line x1="160" y1="200" x2="229.8" y2="314.5" stroke="#404452" stroke-width="1.8"/>
+<path d="M235.0 323.0 L225.5 317.1 L234.1 311.9 z" fill="#404452"/>
+<rect x="240" y="300" width="150" height="46" rx="8" fill="#f4f4f6" stroke="#404452" stroke-width="1.8"/>
+<text x="315.0" y="319.4" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" fill="#000" text-anchor="middle">3 × 3 max pool,</text>
+<text x="315.0" y="336.4" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" fill="#000" text-anchor="middle">same</text>
+<line x1="390" y1="323" x2="420.0" y2="323.0" stroke="#404452" stroke-width="1.8"/>
+<path d="M430.0 323.0 L420.0 328.0 L420.0 318.0 z" fill="#404452"/>
+<rect x="430" y="300" width="150" height="46" rx="8" fill="#fbeef2" stroke="#404452" stroke-width="1.8"/>
+<text x="505.0" y="327.9" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" fill="#000" text-anchor="middle">1 × 1 conv, 32</text>
+<line x1="580" y1="323" x2="649.8" y2="208.5" stroke="#404452" stroke-width="1.8"/>
+<path d="M655.0 200.0 L654.1 211.1 L645.5 205.9 z" fill="#404452"/>
+<rect x="660" y="170" width="150" height="60" rx="8" fill="#ffffff" stroke="#404452" stroke-width="1.8"/>
+<text x="735.0" y="196.4" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#000" text-anchor="middle">concatenate</text>
+<text x="735.0" y="213.4" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#000" text-anchor="middle">channels</text>
+<line x1="810" y1="200" x2="840.0" y2="200.0" stroke="#404452" stroke-width="1.8"/>
+<path d="M850.0 200.0 L840.0 205.0 L840.0 195.0 z" fill="#404452"/>
+<rect x="850" y="170" width="140" height="60" rx="8" fill="#ffffff" stroke="#404452" stroke-width="1.8"/>
+<text x="920.0" y="204.9" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" fill="#000" text-anchor="middle">28 × 28 × 256</text>
+<text x="500" y="378" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" fill="#840132" text-anchor="middle">red: 1 × 1 convolutions that shrink the number of channels</text>
+</svg>

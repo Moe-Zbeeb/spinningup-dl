@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 210" role="img" aria-labelledby="t d">
+<title id="t">A residual block</title>
+<desc id="d">The activation a of layer l passes through a linear layer and ReLU, then another linear layer, and the result is added to a of layer l carried along a shortcut, before a final ReLU produces a of layer l plus 2.</desc>
+<rect x="10" y="95" width="90" height="46" rx="8" fill="#ffffff" stroke="#404452" stroke-width="1.8"/>
+<text x="55.0" y="123.2" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" fill="#000" text-anchor="middle">a[l]</text>
+<rect x="150" y="95" width="140" height="46" rx="8" fill="#eef6fb" stroke="#404452" stroke-width="1.8"/>
+<text x="220.0" y="123.2" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" fill="#000" text-anchor="middle">linear + ReLU</text>
+<rect x="340" y="95" width="90" height="46" rx="8" fill="#ffffff" stroke="#404452" stroke-width="1.8"/>
+<text x="385.0" y="123.2" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" fill="#000" text-anchor="middle">a[l+1]</text>
+<rect x="480" y="95" width="120" height="46" rx="8" fill="#eef6fb" stroke="#404452" stroke-width="1.8"/>
+<text x="540.0" y="123.2" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" fill="#000" text-anchor="middle">linear</text>
+<rect x="650" y="95" width="60" height="46" rx="8" fill="#fbeef2" stroke="#840132" stroke-width="1.8"/>
+<text x="680.0" y="125.7" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#000" text-anchor="middle">+</text>
+<rect x="760" y="95" width="80" height="46" rx="8" fill="#eef6fb" stroke="#404452" stroke-width="1.8"/>
+<text x="800.0" y="123.2" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" fill="#000" text-anchor="middle">ReLU</text>
+<rect x="890" y="95" width="100" height="46" rx="8" fill="#ffffff" stroke="#404452" stroke-width="1.8"/>
+<text x="940.0" y="123.2" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" fill="#000" text-anchor="middle">a[l+2]</text>
+<line x1="100" y1="118" x2="140.0" y2="118.0" stroke="#404452" stroke-width="1.8"/>
+<path d="M150.0 118.0 L140.0 123.0 L140.0 113.0 z" fill="#404452"/>
+<line x1="290" y1="118" x2="330.0" y2="118.0" stroke="#404452" stroke-width="1.8"/>
+<path d="M340.0 118.0 L330.0 123.0 L330.0 113.0 z" fill="#404452"/>
+<line x1="430" y1="118" x2="470.0" y2="118.0" stroke="#404452" stroke-width="1.8"/>
+<path d="M480.0 118.0 L470.0 123.0 L470.0 113.0 z" fill="#404452"/>
+<line x1="600" y1="118" x2="640.0" y2="118.0" stroke="#404452" stroke-width="1.8"/>
+<path d="M650.0 118.0 L640.0 123.0 L640.0 113.0 z" fill="#404452"/>
+<line x1="710" y1="118" x2="750.0" y2="118.0" stroke="#404452" stroke-width="1.8"/>
+<path d="M760.0 118.0 L750.0 123.0 L750.0 113.0 z" fill="#404452"/>
+<line x1="840" y1="118" x2="880.0" y2="118.0" stroke="#404452" stroke-width="1.8"/>
+<path d="M890.0 118.0 L880.0 123.0 L880.0 113.0 z" fill="#404452"/>
+<path d="M55 95 C55 20, 680 20, 680 88" fill="none" stroke="#840132" stroke-width="2.4"/>
+<path d="M674 80 L680 92 L686 80 z" fill="#840132"/>
+<text x="500" y="196" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#840132" text-anchor="middle">shortcut: a[l] skips ahead and is added before the last ReLU</text>
+<text x="540" y="162" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" fill="#404452" text-anchor="middle">z[l+2]</text>
+</svg>
