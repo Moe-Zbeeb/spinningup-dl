@@ -19,7 +19,7 @@ The companion code for this site is a small Python package, `spinup_dl`, with st
 
 The trainers are imported from the package, as in `from spinup_dl import cnn`. The ConvNet trainer builds either a LeNet or a ResNet, and the RNN trainer a plain RNN, a GRU, or an LSTM. The two text models are character-level language models trained on Tiny Shakespeare, about a million characters of Shakespeare's plays.
 
-Every model trains on a laptop CPU in minutes, uses a GPU automatically when there is one, and can also run on Fashion-MNIST, CIFAR-10, or any text file of your own.
+Every model trains on a laptop in minutes, uses a GPU automatically when there is one, and can also run on Fashion-MNIST, CIFAR-10, or any text file of your own. Trained weights for every model are also published, so you can try them without training; see [Pre-trained Models](saving_and_loading.md#pre-trained-models).
 
 ## Why These Models?
 

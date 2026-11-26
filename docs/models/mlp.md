@@ -86,10 +86,18 @@ The model class is `spinup_dl.models.mlp.MLP(in_dim, hidden_sizes, out_dim, acti
 ### What to Expect
 
 ```bash
-python -m spinup_dl.run mlp --epochs 3
+python -m spinup_dl.run mlp --epochs 20
 ```
 
-With the default settings, this run reached 97.4% test accuracy on MNIST after 3 epochs, in 7 seconds on an Apple M4 laptop on a laptop.
+This run took 39 seconds and reached 97.8% test accuracy on MNIST. Its training accuracy reached 99.7%: the gap between the two is the overfitting that [regularization](../intro/improving_networks.md#regularization) addresses.
+
+The trained model from this run is published, so you can use it without training:
+
+```python
+from spinup_dl import load_pretrained
+
+model = load_pretrained("mlp_mnist")
+```
 
 ### Things to Try
 

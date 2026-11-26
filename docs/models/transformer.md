@@ -78,21 +78,29 @@ The model class is `spinup_dl.models.transformer.Transformer(vocab_size, context
 ### What to Expect
 
 ```bash
-python -m spinup_dl.run transformer --epochs 3
+python -m spinup_dl.run transformer --epochs 20
 ```
 
-After 3 epochs of 200 steps, which took 40 seconds, the Transformer reached a test perplexity of 6.90, against 5.09 for the LSTM with the same number of steps. With this little training, the LSTM is ahead; train both for longer and compare again. Here is the start of the Transformer's last sample:
+This run took 4 minutes and reached a test perplexity of 4.59, better than the 4.93 of the [LSTM](rnn.md) trained for the same number of steps, and with dropout it did not overfit. Here is the start of its sample after 20 epochs:
 
 ```text
-For batt uple like mer:
-That upintose ind shere yought did bere be ge,
-Shall no shick?
-Thy have candess. Me, thou me of the in misin.
+brought o' the time of it in death: I have must not he must.
 
-QUEEN YTIDWBUS:
-Hen shall ou.
+HORTENSIO:
+Men,
+Madam, met it is it not ruship or tears the like hearts
+Of shroudds, is right Lord,
+Would then leanms to Happy bitter her hath none
+Than you to be come the proud hook.
 
-ANDUSH:
+```
+
+The trained model from this run is published, so you can use it without training:
+
+```python
+from spinup_dl import load_pretrained
+
+model = load_pretrained("transformer_shakespeare")
 ```
 
 ### Things to Try

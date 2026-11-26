@@ -33,6 +33,8 @@ python -m spinup_dl.run mlp --epochs 3
 python -m spinup_dl.utils.plot data/mlp --value TestAccuracy
 ```
 
+Trained weights for every model are published on the [v0.1.0 release](https://github.com/Moe-Zbeeb/spinningup-dl/releases/tag/v0.1.0) and load with `spinup_dl.load_pretrained("lenet_mnist")`.
+
 The site's Installation, Models, Running Experiments, Experiment Outputs, and Plotting pages document it. `pytest` runs the tests, which `.github/workflows/tests.yml` also runs on every change to the code.
 
 ## Add content

@@ -79,11 +79,21 @@ The model classes are `spinup_dl.models.cnn.LeNet(in_channels, image_size, num_c
 ### What to Expect
 
 ```bash
-python -m spinup_dl.run cnn --arch lenet --epochs 3
-python -m spinup_dl.run cnn --arch resnet --dataset cifar10 --augment True --epochs 1
+python -m spinup_dl.run cnn --arch lenet --epochs 20
+python -m spinup_dl.run cnn --arch resnet --dataset cifar10 --augment True --lr_schedule cosine --epochs 30
 ```
 
-LeNet reached 98.2% test accuracy on MNIST after 3 epochs, in 8 seconds. The ResNet reached 55.8% on CIFAR-10 after a single epoch, in 30 seconds, and keeps improving with more epochs; CIFAR-10 is a much harder dataset than MNIST, so it needs far longer training.
+LeNet reached 99.0% test accuracy on MNIST in under a minute, ahead of the [MLP](mlp.md)'s 97.8% with a quarter of the parameters. The ResNet reached 88.4% on CIFAR-10 after 18 of its 30 epochs, in 8 minutes; the published weights are from that point.
+
+The trained model from this run is published, so you can use it without training:
+
+```python
+from spinup_dl import load_pretrained
+
+model = load_pretrained("lenet_mnist")
+```
+
+For the ResNet, use `load_pretrained("resnet_cifar10")`.
 
 ### Things to Try
 

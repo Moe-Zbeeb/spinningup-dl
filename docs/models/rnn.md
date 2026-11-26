@@ -95,24 +95,30 @@ The model class is `spinup_dl.models.rnn.CharRNN(vocab_size, embed_dim, hidden_s
 ### What to Expect
 
 ```bash
-python -m spinup_dl.run rnn --cell lstm --epochs 3
+python -m spinup_dl.run rnn --cell lstm --epochs 20
 ```
 
-After 3 epochs of 200 steps, which took 22 seconds, the LSTM reached a test perplexity of 5.09. Here is the start of its last sample:
+This run took 2 minutes and 23 seconds. The LSTM's test perplexity was lowest, 4.58, after 9 epochs, and rose to 4.93 by epoch 20 while its training loss kept falling: the model began to memorize the training text. This is the overfitting of [Part 2](../intro/improving_networks.md#bias-and-variance), and `--dropout 0.2` with `--num_layers 2` is the first thing to try against it. Here is the start of its sample after 20 epochs:
 
 ```text
-And asly be embrace threes not true tarms,
-Fit against by accegture wounds,
-The wive you be; I would what make your deeds
-Which he shall be verous: why refest,
-You can a heaven's pardons, bleeding into their.
+Tybalt, that myscureless fully of our year:
+How far she hath your words I'll render his own day.
 
-PARICANA:
-Your friends, and these lungmate.
-
+DUCHESS OF YORK:
+I use their old is lesser than my son.
+She hath now blowers to behold that warp,
+And he was not foul departure of them,
+And I am sour inch and flatterers may
+You tell her, and he
 ```
 
-The words are not yet right, but after only 22 seconds of training the model has already learned the shape of a play: speakers' names in capitals, line breaks, and punctuation. Train longer to see the spelling improve.
+The trained model from this run is published, so you can use it without training:
+
+```python
+from spinup_dl import load_pretrained
+
+model = load_pretrained("lstm_shakespeare")
+```
 
 ### Things to Try
 

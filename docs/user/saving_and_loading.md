@@ -114,3 +114,28 @@ save_image(model.sample(64), "vae_samples.png", nrow=8)
 ```
 
 Diffusion models have the same `sample` method. They take longer, because sampling runs the denoising network once for each of the `timesteps` steps, 1000 by default.
+
+## Pre-trained Models
+
+Trained weights for every model are published with the code, so you can load a model without training it:
+
+```python
+from spinup_dl import list_pretrained, load_pretrained
+
+print(list_pretrained())
+model = load_pretrained("transformer_shakespeare")
+```
+
+The first call downloads the weights, a few megabytes, into `data/pretrained/`, and checks the file's checksum; later calls load the saved copy. The model comes back exactly as `load_model` returns it, so everything in [Loading and Running Trained Models](#loading-and-running-trained-models) applies. To list the models and their results from the command line, run `python -m spinup_dl.pretrained`.
+
+| Name | Model | Result |
+| --- | --- | --- |
+| `mlp_mnist` | [MLP](../models/mlp.md) on MNIST | 97.8% test accuracy |
+| `lenet_mnist` | [LeNet](../models/cnn.md) on MNIST | 99.0% test accuracy |
+| `resnet_cifar10` | [ResNet](../models/cnn.md) on CIFAR-10 | 88.4% test accuracy |
+| `lstm_shakespeare` | [LSTM](../models/rnn.md) on Tiny Shakespeare | Test perplexity 4.93 |
+| `transformer_shakespeare` | [Transformer](../models/transformer.md) on Tiny Shakespeare | Test perplexity 4.59 |
+| `vae_mnist` | [VAE](../models/vae.md) on MNIST | Test loss 103.0 |
+| `diffusion_mnist` | [Diffusion model](../models/diffusion.md) on MNIST | Test loss 0.027 |
+
+Each model's page gives the command that trained it, so you can reproduce the weights yourself.

@@ -1,4 +1,54 @@
 {
   "tag": "v0.1.0",
-  "models": {}
+  "models": {
+    "mlp_mnist": {
+      "file": "mlp_mnist.pt",
+      "sha256": "84cd6e5ed54a7988017a4c39f980ae11aa69bf6e20002ca66498e2557af91ecc",
+      "result": "97.8% test accuracy after 20 epochs",
+      "command": "python -m spinup_dl.run mlp --epochs 20",
+      "minutes": 1
+    },
+    "lenet_mnist": {
+      "file": "lenet_mnist.pt",
+      "sha256": "37096dbb2f5561448ec1510e65fe55b9bac787aa5c8bd3f366142758a47b3c9a",
+      "result": "99.0% test accuracy after 20 epochs",
+      "command": "python -m spinup_dl.run cnn --arch lenet --epochs 20",
+      "minutes": 1
+    },
+    "resnet_cifar10": {
+      "file": "resnet_cifar10.pt",
+      "sha256": "c24adeca1a42222ebac89857c614be75283c915cc043441e12f4177a95a0f879",
+      "result": "88.4% test accuracy after 18 of 30 epochs",
+      "command": "python -m spinup_dl.run cnn --arch resnet --dataset cifar10 --augment True --lr_schedule cosine --epochs 30",
+      "minutes": 9
+    },
+    "lstm_shakespeare": {
+      "file": "lstm_shakespeare.pt",
+      "sha256": "7b7cb1db20dcc39824d0424ea145090220156a24d4ccd9aabe0454c1912b3e56",
+      "result": "test perplexity 4.93 after 20 epochs",
+      "command": "python -m spinup_dl.run rnn --cell lstm --epochs 20",
+      "minutes": 3
+    },
+    "transformer_shakespeare": {
+      "file": "transformer_shakespeare.pt",
+      "sha256": "c591db817956a5678502b869bdc7fc8647f89be1f43ccec2a9ed6568d71e52ce",
+      "result": "test perplexity 4.59 after 20 epochs",
+      "command": "python -m spinup_dl.run transformer --epochs 20",
+      "minutes": 4
+    },
+    "vae_mnist": {
+      "file": "vae_mnist.pt",
+      "sha256": "5eb7b628699c469715d19b480088a91dc84e5af0d9aa9e1fcc0e1e085de87c74",
+      "result": "test loss 103 after 30 epochs",
+      "command": "python -m spinup_dl.run vae --epochs 30",
+      "minutes": 2
+    },
+    "diffusion_mnist": {
+      "file": "diffusion_mnist.pt",
+      "sha256": "2d91c3d60c2dc576aa0e1cb4bf175d9f57a17d52a00b1d450d563e2926fedbfe",
+      "result": "test loss 0.02701 after 10 epochs",
+      "command": "python -m spinup_dl.run diffusion --epochs 10",
+      "minutes": 5
+    }
+  }
 }

@@ -57,13 +57,13 @@ You should see a table for each of the two epochs, ending with a line like
 Logging data to .../spinningup-dl/data/mlp/mlp_s0/progress.txt
 ```
 
-near the top of the output. If that works, try a real dataset. This downloads MNIST, about 12 MB, and trains for three epochs, which took under 10 seconds on an Apple M4 laptop, on its CPU or its GPU:
+near the top of the output. If that works, try a real dataset. This downloads MNIST, about 12 MB, and trains for three epochs, which takes seconds on a recent laptop:
 
 ```bash
 python -m spinup_dl.run mlp --epochs 3
 ```
 
-The test accuracy should be around 97%; in our run it was 97.4%.
+The test accuracy should be around 97%.
 
 ## Running the Tests
 
