@@ -7,5 +7,3 @@ The course follows the topics of the Deep Learning Specialization by Andrew Ng, 
 It is also inspired by public notes from Amir Masoud Sefidian, Nathan Lambert, and Andrej Karpathy.
 
 The site is built with Sphinx, the Read the Docs theme, and MyST. Its figures are drawn with Matplotlib, and its code uses PyTorch.
-
-The authors, and the people who reviewed and tested these pages, will be listed here soon.
