@@ -4,10 +4,6 @@
 :depth: 2
 ```
 
-```{admonition} Coming soon
-This part is being written. Its sections are listed below and will be filled in one at a time.
-```
-
 Welcome to Part 1 of our introduction to deep learning! This part builds up the basic neural network, one piece at a time. In this part, we aim to acquaint you with
 
 - logistic regression, seen as a neural network,
@@ -17,7 +13,122 @@ Welcome to Part 1 of our introduction to deep learning! This part builds up the 
 
 ## Logistic Regression as a Neural Network
 
-*Coming soon.*
+The simplest neural network has a single unit. It is also a classic statistical model, **logistic regression**, and working through it introduces every idea the larger networks use: a forward pass, a loss, gradients, and gradient descent.
+
+### Binary Classification
+
+In **binary classification**, each input belongs to one of two classes, labeled $y = 1$ and $y = 0$: a photo shows a cat or it does not, an email is spam or it is not. An image is turned into an input vector by unrolling its pixel values. A $64 \times 64$ color image has $64 \times 64 \times 3 = 12{,}288$ values, so $x$ is a vector with $n_x = 12{,}288$ entries.
+
+The training set has $m$ examples $\left(x^{(i)}, y^{(i)}\right)$, where the superscript $(i)$ names example $i$. As in the rest of this part, we stack the examples as columns:
+
+$$
+X = \begin{bmatrix} x^{(1)} & x^{(2)} & \cdots & x^{(m)} \end{bmatrix}, \qquad Y = \begin{bmatrix} y^{(1)} & y^{(2)} & \cdots & y^{(m)} \end{bmatrix},
+$$
+
+so $X$ is an $n_x \times m$ matrix and $Y$ is $1 \times m$.
+
+### The Model
+
+Given $x$, we want $\hat{y}$, the probability that $y = 1$. A weighted sum of the inputs, $w^{\top} x + b$, can be any real number, so logistic regression passes it through the [sigmoid](#sigmoid) function, which squeezes any number into the range from 0 to 1:
+
+$$
+\hat{y} = \sigma\left(w^{\top} x + b\right), \qquad \sigma(z) = \frac{1}{1 + e^{-z}},
+$$ (eq-neural-networks-logreg)
+
+where the weights $w$, a vector of $n_x$ numbers, and the bias $b$, a single number, are the parameters to learn. When $w^{\top} x + b$ is large and positive, $\hat{y}$ is close to 1; when it is large and negative, $\hat{y}$ is close to 0.
+
+This is a neural network with no hidden layer: one unit that computes $z = w^{\top} x + b$ and outputs $a = \sigma(z)$. The [Neural Networks](#neural-networks) section stacks many such units into layers.
+
+### The Loss and Cost Functions
+
+To learn $w$ and $b$, we need a number that measures how wrong the predictions are. The natural choice, the squared error $\frac{1}{2}(\hat{y} - y)^2$, turns out to be a poor one here: combined with the sigmoid, it gives a cost with many local minima, where gradient descent can get stuck. Logistic regression uses the **logistic loss**, also called the **cross-entropy loss**, instead:
+
+$$
+\L(\hat{y}, y) = -\left( y \log \hat{y} + (1 - y) \log (1 - \hat{y}) \right).
+$$
+
+To see why it makes sense, look at the two cases. If $y = 1$, the loss is $-\log \hat{y}$, which is small when $\hat{y}$ is close to 1 and grows without limit as $\hat{y}$ approaches 0. If $y = 0$, the loss is $-\log(1 - \hat{y})$, which is small when $\hat{y}$ is close to 0. Either way, confident wrong answers are punished heavily.
+
+The **loss** measures the error on one example. The **cost** averages it over the training set:
+
+$$
+J(w, b) = \frac{1}{m} \sum_{i=1}^{m} \L\left(\hat{y}^{(i)}, y^{(i)}\right).
+$$ (eq-neural-networks-cost)
+
+For logistic regression, $J$ is **convex**: shaped like a bowl, with a single minimum and no local minima to get stuck in.
+
+### Gradient Descent
+
+**Gradient descent** finds the $w$ and $b$ that minimize $J$ by repeatedly taking a small step downhill:
+
+$$
+\begin{aligned}
+w &\leftarrow w - \alpha \frac{\partial J}{\partial w}, \\
+b &\leftarrow b - \alpha \frac{\partial J}{\partial b},
+\end{aligned}
+$$
+
+where $\alpha$ is the learning rate. The derivative says which way the cost increases, and the minus sign steps the other way. In code, we write $dw$ for $\frac{\partial J}{\partial w}$ and $db$ for $\frac{\partial J}{\partial b}$, a convention used throughout this site.
+
+### Computing the Gradients
+
+The gradients come from the **chain rule**, working backward through the computation $z = w^{\top} x + b$, then $a = \sigma(z)$, then $\L(a, y)$. For one example:
+
+1. The derivative of the loss with respect to $a$ is $\frac{\partial \L}{\partial a} = -\frac{y}{a} + \frac{1 - y}{1 - a}$.
+2. The derivative of the sigmoid is $\frac{\partial a}{\partial z} = a(1 - a)$, as in the [Sigmoid](#sigmoid) section.
+3. Multiplying the two, almost everything cancels: $dz = \frac{\partial \L}{\partial z} = a - y$.
+
+That last result is worth remembering: the gradient at $z$ is simply the prediction minus the label. From it, since $z = w^{\top} x + b$, we get $dw = x \, dz$ and $db = dz$. This backward pass through the computation is a small instance of the [backward propagation](#backward-propagation) used for whole networks.
+
+### Vectorization
+
+Computing these quantities one example at a time, in a `for` loop over all $m$ examples, is slow. **Vectorization** processes all the examples at once with matrix operations, which libraries such as NumPy and PyTorch run in fast, parallel code. With the examples as the columns of $X$, one iteration of gradient descent is
+
+$$
+\begin{aligned}
+Z &= w^{\top} X + b, & A &= \sigma(Z), \\
+dZ &= A - Y, & dw &= \frac{1}{m} X \, dZ^{\top}, \quad db = \frac{1}{m} \sum_{i=1}^{m} dZ^{(i)},
+\end{aligned}
+$$ (eq-neural-networks-logreg-vectorized)
+
+followed by the update $w \leftarrow w - \alpha \, dw$ and $b \leftarrow b - \alpha \, db$. Here $Z$, $A$, and $dZ$ are $1 \times m$ row vectors, one entry per example, and adding the number $b$ to the vector $w^{\top} X$ adds it to every entry, a convenience called **broadcasting**.
+
+```{figure} ../_static/img/neural_networks/logistic_regression.svg
+:alt: Left, 200 two-dimensional points in two classes with the predicted probability shaded behind them and a straight line where it equals 0.5. Right, the cost over 300 iterations of gradient descent, falling from 0.69 to 0.15.
+:width: 100%
+
+Logistic regression trained by gradient descent on 200 points, with {eq}`eq-neural-networks-logreg-vectorized`. The decision boundary, where $\hat{y} = 0.5$, is a straight line, and 93.5% of the points fall on the correct side of it. The cost starts at $\log 2 \approx 0.69$, the cost of predicting 0.5 for everything, and falls to 0.15.
+```
+
+```{admonition} You Should Know
+The decision boundary of logistic regression is always a straight line, or in higher dimensions a flat plane: the set of points where $w^{\top} x + b = 0$. To separate classes that a straight line cannot, a model needs hidden layers, which the next section adds.
+```
+
+**Example: Checking the Gradients.** The formulas in {eq}`eq-neural-networks-logreg-vectorized` give exactly the gradients that PyTorch computes automatically:
+
+```python
+import torch
+
+torch.manual_seed(0)
+n_x, m = 4, 100
+X = torch.randn(n_x, m)
+Y = (torch.rand(1, m) < 0.5).float()
+w = torch.randn(n_x, 1, requires_grad=True)
+b = torch.zeros(1, requires_grad=True)
+
+A = torch.sigmoid(w.T @ X + b)
+J = -(Y * torch.log(A) + (1 - Y) * torch.log(1 - A)).mean()
+J.backward()
+
+dZ = A.detach() - Y
+dw = X @ dZ.T / m
+db = dZ.mean()
+print(torch.allclose(dw, w.grad), torch.allclose(db, b.grad))
+```
+
+```text
+True True
+```
 
 ## Neural Networks
 
@@ -215,3 +326,7 @@ Large weights push $z$ into the flat region. Suppose a unit has 1000 inputs, eac
 ```{admonition} You Should Know
 The factor 0.01 is a rule of thumb that works well for networks with one or two hidden layers. In a deep network, weights that are too small shrink the signal a little more at every layer, which slows learning in a different way. The flat start of the right panel in the figure above is a mild version of this. Part 2 shows how to choose the scale of the weights from the number of inputs to each layer.
 ```
+
+## Recap
+
+In this part, you built a neural network from the ground up. Logistic regression showed the whole recipe on a single unit: a forward pass, a loss, gradients from the chain rule, and gradient descent, all vectorized over the training set. Stacking units into layers gave a neural network, trained by forward propagation, backward propagation, and parameter updates. You saw why the hidden layers need nonlinear activation functions and which ones to choose, and why the weights must start small and random. [Part 2](improving_networks.md) turns to making these networks train faster and generalize better.

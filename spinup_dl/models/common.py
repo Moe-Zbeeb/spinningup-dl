@@ -59,10 +59,13 @@ def evaluate_classifier(model, loader, device):
     return total_loss / count, correct / count
 
 
-def train_classifier(model, train_set, test_set, logger, epochs, batch_size, lr, weight_decay, optimizer, device, num_workers=0):
+def train_classifier(model, train_set, test_set, logger, epochs, batch_size, lr, weight_decay, optimizer, device, num_workers=0, lr_schedule="constant"):
     model.to(device)
     opt = make_optimizer(optimizer, model.parameters(), lr, weight_decay)
     train_loader, test_loader = loaders(train_set, test_set, batch_size, num_workers)
+    if lr_schedule not in ("constant", "cosine"):
+        raise ValueError(f"unknown lr_schedule '{lr_schedule}'; choose constant or cosine")
+    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(opt, T_max=epochs * len(train_loader)) if lr_schedule == "cosine" else None
     logger.log(f"Number of parameters: {count_parameters(model)}")
     start = time.time()
     for epoch in range(1, epochs + 1):
@@ -75,6 +78,8 @@ def train_classifier(model, train_set, test_set, logger, epochs, batch_size, lr,
             opt.zero_grad()
             loss.backward()
             opt.step()
+            if scheduler is not None:
+                scheduler.step()
             total_loss += loss.item() * y.numel()
             correct += (logits.argmax(1) == y).sum().item()
             count += y.numel()

@@ -33,6 +33,6 @@ Throughout the pages you will see boxes like this one:
 These boxes hold the points worth stopping for: a definition you will need later, a common mistake, or the reason a detail is the way it is.
 ```
 
-## A Work in Progress
+## Feedback
 
-Pages are published one at a time. Anything marked "Coming soon" is on the way. If you find an error or something unclear, the "Edit on GitHub" link at the top of every page takes you to its source.
+If you find an error or something unclear, the "Edit on GitHub" link at the top of every page takes you to its source, where you can suggest a fix.

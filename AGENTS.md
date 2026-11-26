@@ -162,6 +162,7 @@ If the notes use notation that is not in this table, typeset it as the notes wri
 - Numbers on the site come from real runs. Run the command shown on the page, and quote what it printed, including the hardware and the time it took. Do not estimate results.
 - Run `pytest` before publishing. `.github/workflows/tests.yml` runs it on every change to the code, and a failing test is a broken release.
 - Write no comments in the code.
+- Pre-trained weights live on a GitHub release, not in the repository. To publish new ones, train each model with the command in `tools/release_weights.py`, run `python tools/release_weights.py RUNS_DIR OUT_DIR TAG` to copy the weights and record their checksums and results in `spinup_dl/pretrained.json`, upload the files in `OUT_DIR` to a release with that tag, and update the "What to Expect" sections to match.
 
 ## Publishing
 

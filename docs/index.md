@@ -52,7 +52,6 @@ models/diffusion
 :maxdepth: 2
 :caption: Etc.
 
-etc/authors
 etc/acknowledgements
 etc/about
 ```

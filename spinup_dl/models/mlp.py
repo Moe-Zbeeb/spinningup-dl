@@ -23,12 +23,12 @@ class MLP(nn.Module):
 
 
 def mlp(dataset="mnist", hidden_sizes=(256, 256), activation="relu", dropout=0.0, epochs=10, batch_size=128,
-        lr=1e-3, weight_decay=0.0, optimizer="adam", seed=0, device="auto", num_workers=0, logger_kwargs=dict()):
+        lr=1e-3, weight_decay=0.0, optimizer="adam", lr_schedule="constant", seed=0, device="auto", num_workers=0, logger_kwargs=dict()):
     logger = Logger(**logger_kwargs)
     logger.save_config(locals())
     set_seed(seed)
     train_set, test_set, info = image_datasets(dataset)
     model = MLP(flat_dim(info["shape"]), hidden_sizes, info["classes"], activation, dropout)
-    train_classifier(model, train_set, test_set, logger, epochs, batch_size, lr, weight_decay, optimizer, get_device(device), num_workers)
+    train_classifier(model, train_set, test_set, logger, epochs, batch_size, lr, weight_decay, optimizer, get_device(device), num_workers, lr_schedule)
     logger.close()
     return model

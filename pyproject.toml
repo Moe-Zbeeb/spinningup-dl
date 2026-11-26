@@ -23,5 +23,8 @@ test = ["pytest>=7"]
 [tool.setuptools.packages.find]
 include = ["spinup_dl*"]
 
+[tool.setuptools.package-data]
+spinup_dl = ["pretrained.json"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]

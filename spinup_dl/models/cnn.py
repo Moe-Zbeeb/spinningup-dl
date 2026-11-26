@@ -61,7 +61,7 @@ class ResNet(nn.Module):
 
 
 def cnn(arch="lenet", dataset="mnist", widths=(32, 64, 128), blocks_per_stage=2, augment=False, epochs=10, batch_size=128,
-        lr=1e-3, weight_decay=0.0, optimizer="adam", seed=0, device="auto", num_workers=0, logger_kwargs=dict()):
+        lr=1e-3, weight_decay=0.0, optimizer="adam", lr_schedule="constant", seed=0, device="auto", num_workers=0, logger_kwargs=dict()):
     logger = Logger(**logger_kwargs)
     logger.save_config(locals())
     set_seed(seed)
@@ -73,6 +73,6 @@ def cnn(arch="lenet", dataset="mnist", widths=(32, 64, 128), blocks_per_stage=2,
         model = ResNet(channels, info["classes"], widths, blocks_per_stage)
     else:
         raise ValueError(f"unknown arch '{arch}'; choose lenet or resnet")
-    train_classifier(model, train_set, test_set, logger, epochs, batch_size, lr, weight_decay, optimizer, get_device(device), num_workers)
+    train_classifier(model, train_set, test_set, logger, epochs, batch_size, lr, weight_decay, optimizer, get_device(device), num_workers, lr_schedule)
     logger.close()
     return model
