@@ -16,7 +16,7 @@ The site is a Sphinx project in `docs/`, written in MyST Markdown, themed with `
 | What | Where |
 | --- | --- |
 | Landing page and sidebar order | `docs/index.md` |
-| Pages | `docs/user/`, `docs/intro/`, `docs/resources/`, `docs/models/`, `docs/utils/`, `docs/etc/` |
+| Pages | One folder per sidebar section: `docs/user/`, `docs/intro/`, `docs/resources/`, `docs/models/`, `docs/utils/`, `docs/etc/`. New sections get a new folder |
 | Element reference page | `docs/etc/style-guide.md` |
 | Images | `docs/_static/img/<page-name>/` |
 | All styling | `docs/_static/css/faf.css` |
@@ -34,11 +34,24 @@ Every unwritten page holds a single `Coming soon` box. Open the file, delete the
 
 1. Create `docs/<section>/<name>.md`. Use a short lowercase file name with underscores, such as `docs/models/resnet.md`. The file name becomes the URL.
 2. Start the file with one `# Title`. That title is the sidebar label.
-3. Add `<section>/<name>` (no extension) to the matching `toctree` in `docs/index.md`, at the position it should appear in the sidebar.
+3. If the page is not written yet, give it the placeholder box below the title and nothing else:
+
+   ````markdown
+   # Residual Network
+
+   ```{admonition} Coming soon
+   :class: coming-soon
+
+   This page is being written. It will cover background, key equations, pseudocode, and documentation for residual networks.
+   ```
+   ````
+
+4. Add `<section>/<name>` (no extension) to the matching `toctree` in `docs/index.md`, at the position it should appear in the sidebar.
 
 ### Add a new section to the sidebar
 
-Add a new `toctree` block to `docs/index.md`. The `:caption:` is the section label.
+1. Create a folder `docs/<section>/` and at least one page file in it, as in the steps above.
+2. Add a `toctree` block to `docs/index.md`. The `:caption:` is the section label. Sections appear in the sidebar in the order their blocks appear in the file, so place the block where the section belongs. Keep `:maxdepth: 2`. Every line in the block must match a file that exists.
 
 ````markdown
 ```{toctree}
@@ -46,7 +59,6 @@ Add a new `toctree` block to `docs/index.md`. The `:caption:` is the section lab
 :caption: Advanced Topics
 
 advanced/normalization
-advanced/initialization
 ```
 ````
 
@@ -92,11 +104,21 @@ A Models Docs page follows the Spinning Up algorithm-page outline:
 ### Other Public Implementations
 ```
 
+| Heading | What goes under it |
+| --- | --- |
+| Background | What the model is, what problem it was built for, and what the reader should already know, with a link to the page that teaches it |
+| Quick Facts | Three to five bullets: input and output, what the model assumes about the data, when to use it |
+| Key Equations | The forward computation and the loss, each symbol defined right after the equation |
+| Pseudocode | The algorithm in a `text` block |
+| Documentation | A minimal PyTorch implementation with a usage example. When the site gains a companion code package, this becomes the reference for that package's implementation |
+| Relevant Papers | A plain bulleted list of the papers that introduced or shaped the model, each as a link with authors and year |
+| Other Public Implementations | Links to well-known implementations elsewhere |
+
 ## Elements
 
 Links to other pages are relative paths ending in `.md`: `[Part 1](../intro/dl_intro.md)`. Link to a section with `[text](../intro/dl_intro.md#section-heading-in-lowercase-with-hyphens)`.
 
-Math uses `$...$` inline and `$$...$$` for display. Multi-line math uses `aligned` inside the dollar signs. A label after the closing `$$` numbers the equation, and `` {eq}`label` `` refers to it.
+Math uses `$...$` inline and `$$...$$` for display. Multi-line math uses `aligned` inside the dollar signs. To number an equation, put a label in parentheses on the same line as the closing `$$`. Refer to it in the text with the `eq` role. Labels are shared across the whole site, so start each one with the page name (`eq-mlp-forward`, not `eq-forward`).
 
 ```markdown
 $$
@@ -104,7 +126,9 @@ $$
 z &= Wx + b \\
 a &= \max(0, z)
 \end{aligned}
-$$ (eq-relu-layer)
+$$ (eq-mlp-layer)
+
+The second line of {eq}`eq-mlp-layer` is the ReLU.
 ```
 
 Site-wide macros are `\R`, `\E`, `\L`, `\argmax`, `\argmin`. Add more under `mathjax3_config` in `docs/conf.py` when a symbol is used on more than one page.
@@ -132,7 +156,7 @@ One result worth remembering.
 | Warning | `{warning}` | Mistakes that cost time |
 | Coming soon | `{admonition} Coming soon` with `:class: coming-soon` | Unwritten pages and sections |
 
-Code blocks always name a language (`python`, `bash`, `text` for pseudocode). Code examples use PyTorch and must run as written.
+Code blocks always name a language (`python`, `bash`, `text` for pseudocode). Code examples use PyTorch and must run as written. The site build does not execute code and the build environment has no PyTorch, so run each example in an environment that has `torch` before publishing it. If that is not possible, tell the user the example is unverified.
 
 Figures go in `docs/_static/img/<page-name>/` and are placed with `figure` so they carry a caption. The path is relative to the page file. Prefer SVG for diagrams and PNG at twice the display size for plots.
 
@@ -145,7 +169,7 @@ What the reader should notice in the figure.
 ```
 ````
 
-Papers are cited with footnotes: `[^adam]` in the text and `[^adam]: Kingma and Ba, [Adam: A Method for Stochastic Optimization](https://arxiv.org/abs/1412.6980), 2015.` at the bottom of the file.
+A footnote backs a specific claim in the text: `[^adam]` at the claim and `[^adam]: Kingma and Ba, [Adam: A Method for Stochastic Optimization](https://arxiv.org/abs/1412.6980), 2015.` as the last lines of the file. Footnotes always render at the very bottom of the page, whatever heading the definition sits under, so never put footnote definitions under a heading such as Relevant Papers: the heading would render empty. A reading list is a plain bulleted list. The same paper may appear in both.
 
 ## Voice
 
@@ -182,7 +206,9 @@ make serve
 make check
 ```
 
-`make setup` is needed once per machine. `make serve` opens a live preview at `http://localhost:8000` that reloads on save. `make check` is the gate: it builds with warnings as errors, exactly as the deploy workflow does. A page is done when `make check` passes and the page has been looked at in the preview.
+`make setup` is needed once per machine. `make serve` opens a live preview at `http://localhost:8000` that reloads on save. `make check` is the gate: it builds with warnings as errors, exactly as the deploy workflow does, and writes the HTML to `docs/_build/html/`.
+
+A page is done when `make check` passes and the rendered page has been looked at, in the preview or by opening its file under `docs/_build/html/`. The build cannot see an empty heading, a broken equation, or a figure at the wrong size; only looking can.
 
 Publishing is a commit and a push to `main`. The GitHub Actions workflow rebuilds and deploys the site. Commit and push only when the user asks.
 
@@ -197,3 +223,5 @@ Publishing is a commit and a push to `main`. The GitHub Actions workflow rebuild
 | Page title missing from the sidebar | File has no `#` heading, or has two | Exactly one `#` heading, first in the file |
 | Raw `$` signs showing in the text | Space after the opening `$` or before the closing one | Remove the spaces |
 | Image not found | Path written from the repo root | Write it relative to the page file |
+| A heading renders with nothing under it | Only footnote definitions were placed there | Put a bulleted list under the heading and move the footnotes to the end of the file |
+| `duplicate label of equation` | Two pages use the same equation label | Prefix labels with the page name |
