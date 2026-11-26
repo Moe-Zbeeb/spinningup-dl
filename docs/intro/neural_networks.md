@@ -77,7 +77,50 @@ where $\alpha$ is the learning rate.
 
 ## Activation Functions
 
-*Coming soon.*
+Every layer passes $Z^{[l]}$ through its **activation function** $g^{[l]}$, as in the [forward propagation](#forward-propagation) step. This section covers four common choices: the sigmoid, tanh, the ReLU, and the leaky ReLU.
+
+### Sigmoid
+
+The **sigmoid**, or logistic function, is usually used for the output layer only, because its output lies between 0 and 1. It is not used for the hidden layers, because its derivative is close to 0 for values of $z$ far from the origin. The function and its derivative are
+
+$$
+\sigma(z) = \frac{1}{1 + e^{-z}}, \qquad \sigma'(z) = \sigma(z)\left(1 - \sigma(z)\right).
+$$
+
+### Tanh
+
+The **tanh** function is better than the sigmoid for hidden layers, even though it is only a shifted and rescaled sigmoid: $\tanh(z) = 2\sigma(2z) - 1$. Its output lies between $-1$ and $1$, so when its inputs have a mean of zero, its outputs have a mean close to zero as well, which can be useful for the computation that follows. The function and its derivative are
+
+$$
+\tanh(z) = \frac{2}{1 + e^{-2z}} - 1, \qquad \tanh'(z) = 1 - \tanh(z)^2.
+$$
+
+### ReLU
+
+The **rectified linear unit**, or **ReLU**, $\mathrm{ReLU}(z) = \max(0, z)$, is the de facto standard for hidden units today. Its derivative is easy to compute, and it does not suffer from the slow convergence of gradient descent that a derivative close to 0 causes. The function and its derivative are
+
+$$
+\mathrm{ReLU}(z) = \begin{cases} 0 & \text{if } z < 0, \\ z & \text{if } z \geq 0, \end{cases} \qquad \mathrm{ReLU}'(z) = \begin{cases} 0 & \text{if } z < 0, \\ 1 & \text{if } z \geq 0. \end{cases}
+$$
+
+```{admonition} You Should Know
+The derivative of the ReLU is not defined at $z = 0$, where the function has a corner. We work around this with a convention on what the derivative is at 0. The formula above sets it to 1.
+```
+
+### Leaky ReLU
+
+The **leaky ReLU**, $\max(0.01z, z)$, is similar to the ReLU, but instead of being zero for values of $z$ below 0, it has a small positive slope there. Its derivative is therefore never 0, which makes it easier for an optimizer such as gradient descent to converge. In practice, the ordinary ReLU is still the standard. The function and its derivative are
+
+$$
+\mathrm{LReLU}(z) = \begin{cases} 0.01z & \text{if } z < 0, \\ z & \text{if } z \geq 0, \end{cases} \qquad \mathrm{LReLU}'(z) = \begin{cases} 0.01 & \text{if } z < 0, \\ 1 & \text{if } z \geq 0. \end{cases}
+$$
+
+```{figure} ../_static/img/neural_networks/activation_functions.svg
+:alt: Six plots of activation functions over z from minus 6 to 6. The perceptron is a step from 0 to 1 at z equals 0. The sigmoid rises smoothly from 0 to 1, and tanh from minus 1 to 1. ReLU is zero for negative z and rises linearly after. Leaky ReLU has a small slope for negative z. ELU curves smoothly from minus 1 up to the line z.
+:width: 100%
+
+Activation functions. The perceptron step and the ELU are shown for comparison. The leaky ReLU is drawn with a slope of 0.1 for $z < 0$ so that the slope is visible.
+```
 
 ## Random Initialization
 

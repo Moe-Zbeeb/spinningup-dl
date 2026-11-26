@@ -46,7 +46,7 @@ The maintainer adds the course one piece at a time by handing over notes for a t
 8. **Check.** Run `make check`. Then run `make shot` on the page and look at the image: equations render, figures are the right size, no heading is empty. Math is drawn in the browser, so reading the HTML file does not tell you whether an equation renders.
 9. **Report.** Tell the maintainer which section was written, what you added beyond the notes, and anything you flagged.
 
-Figures in the notes are redrawn as SVG in the site palette, or used as supplied when the maintainer provides the image file. They go in `docs/_static/img/<page-file-name>/`. Do not copy figures, text, or code from papers, books, or other courses; describe the idea in the site's own words and cite the source with a footnote.
+Figures in the notes are redrawn as SVG in the site palette, or used as supplied when the maintainer provides the image file. They go in `docs/_static/img/<page-file-name>/`. The script that draws each figure goes in `tools/figures/`, named after the figure, so it can be redrawn later. Plots use matplotlib with curves in `#2e95d3`, axes and text in `#404452`, light grid lines, and a transparent background; see `tools/figures/activation_functions.py`. Diagrams are written as SVG directly; see `tools/figures/three_layer_network.py`. Do not copy figures, text, or code from papers, books, or other courses; describe the idea in the site's own words and cite the source with a footnote.
 
 ### While a Part Is Half Written
 
@@ -105,6 +105,9 @@ The notes use plain-text shorthand. Typeset it as follows, on every page.
 | `(A)^T` | $\left(A\right)^{\top}$ | Transpose |
 | `np.sum(...)` inside a formula | $\texttt{np.sum}(\dots)$ | NumPy code kept as code inside the math |
 | `alpha` | $\alpha$ | The learning rate |
+| `σ(z)`, `tanh(z)` | $\sigma(z)$, $\tanh(z)$ | The sigmoid and tanh activation functions |
+| `ReLU(z)`, `LReLU(z)` | $\mathrm{ReLU}(z)$, $\mathrm{LReLU}(z)$ | The ReLU and leaky ReLU activation functions |
+| `σ'(z)`, `ReLU'(z)` | $\sigma'(z)$, $\mathrm{ReLU}'(z)$ | The derivative of an activation function |
 | `x(i)`, `y(i)` | $x^{(i)}$, $y^{(i)}$ | Training example $i$ |
 | `x<t>`, `a<t>` | $x^{\langle t \rangle}$, $a^{\langle t \rangle}$ | Time step $t$ of a sequence |
 | `X{t}`, `Y{t}` | $X^{\{t\}}$, $Y^{\{t\}}$ | Mini-batch $t$ |
