@@ -1,5 +1,125 @@
 # Diffusion Model
 
-```{admonition} Coming soon
-This page is being written. It will cover background, key equations, pseudocode, and documentation for diffusion models.
+```{contents} Table of Contents
+:depth: 2
 ```
+
+## Background
+
+A **diffusion model** generates images by learning to undo noise. The idea has two halves. A fixed **forward process** takes a training image and adds a little Gaussian noise to it, over and over, for $T$ steps, until nothing is left but noise. A neural network then learns the **reverse process**: given a noisy image and how noisy it is, predict the noise that was added. To generate a new image, start from pure noise and apply the network $T$ times, removing a little noise at each step, until an image emerges.
+
+The companion code implements a **denoising diffusion probabilistic model**, or **DDPM**, the version that made diffusion models practical. Its network is a small **U-Net**: a ConvNet that shrinks the image, then grows it back, with shortcuts that pass details from each resolution on the way down to the same resolution on the way up.
+
+### Quick Facts
+
+- Input: images. Output: new images, generated from noise.
+- Training is a simple regression, predicting the added noise with a squared error, so it is stable.
+- Samples are sharp and varied, but generating one takes $T$ passes of the network, 1000 by default, which is slow.
+- Diffusion models are behind most modern image, video, and audio generators.
+
+### Key Equations
+
+The forward process uses a schedule of small noise levels $\beta_1, \dots, \beta_T$, rising linearly from $10^{-4}$ to $0.02$. With $\alpha_t = 1 - \beta_t$ and $\bar{\alpha}_t = \prod_{s=1}^{t} \alpha_s$, a noisy version of an image $x_0$ at any step $t$ can be produced in one go:
+
+$$
+x_t = \sqrt{\bar{\alpha}_t} \, x_0 + \sqrt{1 - \bar{\alpha}_t} \, \epsilon, \qquad \epsilon \sim \mathcal{N}(0, I).
+$$ (eq-diffusion-forward)
+
+As $t$ grows, $\bar{\alpha}_t$ shrinks toward 0, so $x_t$ is mostly image at first and mostly noise at the end. The network $\epsilon_\theta(x_t, t)$ is trained to predict $\epsilon$ from $x_t$ and $t$, with the loss
+
+$$
+\L = \E_{x_0, t, \epsilon} \left\| \epsilon - \epsilon_\theta\left(x_t, t\right) \right\|^2,
+$$ (eq-diffusion-loss)
+
+where $x_0$ is a training image with pixels scaled to $[-1, 1]$, $t$ is drawn uniformly from $1, \dots, T$, and $x_t$ comes from {eq}`eq-diffusion-forward`. The step $t$ enters the network as a sinusoidal embedding added inside every residual block, so the same network can denoise at every noise level.
+
+To sample, start from $x_T \sim \mathcal{N}(0, I)$ and, for $t = T, \dots, 1$, compute
+
+$$
+x_{t-1} = \frac{1}{\sqrt{\alpha_t}} \left( x_t - \frac{\beta_t}{\sqrt{1 - \bar{\alpha}_t}} \, \epsilon_\theta(x_t, t) \right) + \sqrt{\beta_t} \, z, \qquad z \sim \mathcal{N}(0, I),
+$$ (eq-diffusion-sample)
+
+with $z = 0$ at the last step.
+
+### Pseudocode
+
+```text
+Algorithm 1  Training a diffusion model
+
+for epoch = 1, 2, ..., epochs do
+    for each mini-batch X0 of the training set do
+        Scale the pixels of X0 to [-1, 1]
+        Draw a step t uniformly from 1, ..., T and noise ε for each image
+        Xt ← √ᾱt · X0 + √(1 − ᾱt) · ε, equation (1)
+        Update the network with Adam, to minimize ‖ε − εθ(Xt, t)‖², equation (2)
+    end for
+    Log the test loss and save the model
+end for
+
+Algorithm 2  Sampling
+
+x ← pure noise
+for t = T, T − 1, ..., 1 do
+    x ← one denoising step, equation (3)
+end for
+return x, scaled back to [0, 1]
+```
+
+## Documentation
+
+```python
+spinup_dl.diffusion(dataset="mnist", base_channels=32, timesteps=1000, beta_start=1e-4, beta_end=0.02, epochs=10,
+                    batch_size=128, lr=2e-4, weight_decay=0.0, optimizer="adam", sample_every=1, num_samples=64,
+                    seed=0, device="auto", num_workers=0, logger_kwargs=dict())
+```
+
+Trains a diffusion model and returns it.
+
+| Argument | Meaning |
+| --- | --- |
+| `dataset` | `mnist`, `fashion_mnist`, `cifar10`, or `fake`. Image sides must be divisible by 4 |
+| `base_channels` | Channels at the U-Net's full resolution; the next resolution down has twice as many |
+| `timesteps` | Number of noising steps $T$ |
+| `beta_start`, `beta_end` | First and last noise levels of the linear schedule |
+| `sample_every` | Save a grid of samples every this many epochs, and always after the last. 0 turns sampling off |
+| `num_samples` | Number of images in each grid |
+| `epochs`, `batch_size`, `lr`, `weight_decay`, `optimizer`, `seed`, `device`, `num_workers`, `logger_kwargs` | As for the [MLP](mlp.md#documentation) |
+
+The model class is `spinup_dl.models.diffusion.Diffusion(image_shape, base_channels, timesteps, beta_start, beta_end)`. Its `loss(x0)` method computes {eq}`eq-diffusion-loss` for a batch, and `sample(n, device)` generates `n` images.
+
+### What to Expect
+
+```bash
+python -m spinup_dl.run diffusion --epochs 10
+```
+
+After 10 epochs, which took 5 minutes on an Apple M4 laptop, the test loss was 0.027. These are 64 images it generated:
+
+```{figure} ../_static/img/models/diffusion_samples.png
+:alt: An 8 by 8 grid of handwritten digits generated by the diffusion model after 10 epochs of training on MNIST. Many are clear digits, such as 2, 3, 5, 6, 7, and 8; some are still malformed strokes.
+:width: 50%
+
+Samples from the diffusion model after 10 epochs on MNIST.
+```
+
+Many of the samples are clear digits, while others are still malformed. Training helps visibly: after 2 epochs, with a test loss of 0.039, the samples were mostly strokes rather than digits, and they keep improving beyond 10 epochs.
+
+### Things to Try
+
+- Save the intermediate images during sampling and lay them out in a row, to watch a digit emerge from noise.
+- Train with `--timesteps 100` and compare the samples with the default 1000 steps.
+- Compare the samples with those of the [VAE](vae.md) trained for the same time.
+
+## References
+
+### Relevant Papers
+
+- [Denoising Diffusion Probabilistic Models](https://arxiv.org/abs/2006.11239), Ho, Jain, and Abbeel, 2020.
+- [Deep Unsupervised Learning using Nonequilibrium Thermodynamics](https://arxiv.org/abs/1503.03585), Sohl-Dickstein, Weiss, Maheswaranathan, and Ganguli, 2015.
+- [U-Net: Convolutional Networks for Biomedical Image Segmentation](https://arxiv.org/abs/1505.04597), Ronneberger, Fischer, and Brox, 2015.
+
+### Other Public Implementations
+
+- [denoising-diffusion-pytorch](https://github.com/lucidrains/denoising-diffusion-pytorch), a compact PyTorch DDPM.
+- [diffusers](https://github.com/huggingface/diffusers), Hugging Face's library of diffusion models and samplers, with many pre-trained models.
+- [The original DDPM code](https://github.com/hojonathanho/diffusion), in TensorFlow.

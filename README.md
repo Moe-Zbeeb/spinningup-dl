@@ -23,6 +23,18 @@ make serve
 | `make shot PAGE=intro/neural_networks` | Save a screenshot of a built page to `docs/_build/shots/` |
 | `make clean` | Delete the build output |
 
+## Companion code
+
+The `spinup_dl` package has standalone PyTorch implementations of the models in the Models Docs section: an MLP, ConvNets (LeNet and a ResNet), character-level RNN/GRU/LSTM and Transformer language models, a VAE, and a diffusion model.
+
+```bash
+pip install -e .
+python -m spinup_dl.run mlp --epochs 3
+python -m spinup_dl.utils.plot data/mlp --value TestAccuracy
+```
+
+The site's Installation, Models, Running Experiments, Experiment Outputs, and Plotting pages document it. `pytest` runs the tests, which `.github/workflows/tests.yml` also runs on every change to the code.
+
 ## Add content
 
 Each page is one Markdown file. Most pages currently hold a "Coming soon" box: open the file, replace the box with the content, and push.
@@ -48,6 +60,8 @@ docs/
   _static/css/modify.css  all styling, ported from Spinning Up
   _static/img/          images
   _templates/           breadcrumbs and footer line
+spinup_dl/              companion code: models, runner, logger, plotting
+tests/                  tests for the companion code
 templates/              page and section templates
 tools/                  template checker, and sources for the logo and banner
 AGENTS.md               instructions for AI coding agents

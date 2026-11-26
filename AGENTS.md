@@ -153,6 +153,16 @@ If the notes use notation that is not in this table, typeset it as the notes wri
 - Do not edit `tools/lint_content.py` to make a page pass. Fix the page. Change the checker only when the maintainer changes the template.
 - Do not leave `TODO` markers, empty headings, or half-written sections in a page. A section is either written or still says `*Coming soon.*`.
 
+## Companion Code
+
+`spinup_dl/` is a small PyTorch package with one file per model in `spinup_dl/models/`, documented on the Models Docs pages and the User Documentation pages. When you change it:
+
+- Keep each model file standalone and readable: a model class that stores its arguments in `self.config`, and a trainer function of the same name whose arguments are the hyperparameters.
+- Keep the Models Docs page in step with the code: its signature block, its argument table, and its "What to Expect" numbers.
+- Numbers on the site come from real runs. Run the command shown on the page, and quote what it printed, including the hardware and the time it took. Do not estimate results.
+- Run `pytest` before publishing. `.github/workflows/tests.yml` runs it on every change to the code, and a failing test is a broken release.
+- Write no comments in the code.
+
 ## Publishing
 
 The site deploys from `main` through `.github/workflows/deploy.yml`. Publishing is a commit and a push to `main`. Do it when the maintainer asks you to publish, or has told you to publish each section as it is finished. Write the commit message as one line that says what was added, such as "Write the Dropout section of Part 2".
