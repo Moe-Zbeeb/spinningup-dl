@@ -100,15 +100,81 @@ a:visited {
   background-color: var(--color--warmgraylight) !important;
 }
 
-.wy-menu-vertical li.toctree-l2.current > a {
-  background-color: var(--color--coolgray1) !important;
+.wy-menu-vertical a {
+  transition: background-color 120ms ease, color 120ms ease, box-shadow 120ms ease;
 }
 
-.wy-menu-vertical a:hover,
+.wy-menu-vertical a:hover {
+  color: var(--color--white) !important;
+  background-color: rgba(255, 255, 255, 0.06) !important;
+  box-shadow: inset 3px 0 0 var(--color--mediumblue);
+}
+
+.wy-menu-vertical a:active {
+  color: var(--color--white) !important;
+  background-color: rgba(255, 255, 255, 0.11) !important;
+}
+
+.wy-menu-vertical a:focus-visible {
+  outline: 2px solid var(--color--mediumblue);
+  outline-offset: -2px;
+}
+
+.wy-menu-vertical li.toctree-l1.current > a {
+  color: var(--color--black) !important;
+  font-weight: 700;
+  background-color: transparent !important;
+  box-shadow: inset 3px 0 0 var(--color--mediumblue);
+}
+
+.wy-menu-vertical li.current li > a {
+  color: var(--color--coolgray3) !important;
+}
+
+.wy-menu-vertical li.current li.current > a {
+  color: var(--color--black) !important;
+  background-color: rgba(64, 68, 82, 0.08) !important;
+}
+
 .wy-menu-vertical li.current a:hover,
-.wy-menu-vertical li.toctree-l2.current > a:hover {
-  color: var(--color--warmgraylight) !important;
-  background-color: var(--color--coolgray3) !important;
+.wy-menu-vertical li.current li > a:hover,
+.wy-menu-vertical li.toctree-l1.current > a:hover {
+  color: var(--color--black) !important;
+  background-color: rgba(64, 68, 82, 0.07) !important;
+  box-shadow: inset 3px 0 0 var(--color--mediumblue);
+}
+
+.wy-menu-vertical li.current a:active {
+  background-color: rgba(64, 68, 82, 0.13) !important;
+}
+
+.wy-menu-vertical li button.toctree-expand:before {
+  content: "" !important;
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin-bottom: 2px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(-45deg);
+  transition: transform 120ms ease;
+}
+
+.wy-menu-vertical li.current > a button.toctree-expand:before,
+.wy-menu-vertical li.on > a button.toctree-expand:before {
+  transform: rotate(45deg);
+}
+
+.wy-menu-vertical a:hover button.toctree-expand,
+.wy-menu-vertical li.current > a:hover button.toctree-expand {
+  color: var(--color--mediumblue) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wy-menu-vertical a,
+  .wy-menu-vertical li button.toctree-expand:before {
+    transition: none;
+  }
 }
 
 .wy-alert-title,
