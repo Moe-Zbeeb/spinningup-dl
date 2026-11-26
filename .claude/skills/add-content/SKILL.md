@@ -7,7 +7,7 @@ description: Use when adding, writing, editing, renaming, moving, or removing a 
 
 ## Overview
 
-The site is a Sphinx project in `docs/`, written in MyST Markdown, themed with `sphinx_rtd_theme` and one stylesheet, `modify.css`, ported from OpenAI's Spinning Up so the fonts, link colors, and layout match that site. Only the name, logo, and banner are AUB Frontier AI Fellows (AUB–FAF). A page is one `.md` file. A page appears in the sidebar only when a `toctree` in `docs/index.md` lists it.
+The site is a Sphinx project in `docs/`, written in MyST Markdown, themed with `sphinx_rtd_theme` and one stylesheet, `modify.css`, ported from OpenAI's Spinning Up so the fonts, link colors, and layout match that site. Only the name and logo are AUB Frontier AI Fellows (AUB–FAF). A page is one `.md` file. A page appears in the sidebar only when a `toctree` in `docs/index.md` lists it.
 
 `AGENTS.md` at the repository root holds the house style and the workflow for typesetting notes; read it first. This skill holds the mechanics. `templates/` holds the shape of a part, a section, a model page, and a placeholder.
 
@@ -18,7 +18,7 @@ The site is a Sphinx project in `docs/`, written in MyST Markdown, themed with `
 | What | Where |
 | --- | --- |
 | Landing page and sidebar order | `docs/index.md` |
-| Pages | One folder per sidebar section: `docs/user/`, `docs/intro/`, `docs/resources/`, `docs/models/`, `docs/utils/`, `docs/etc/`. New sections get a new folder |
+| Pages | One folder per sidebar section: `docs/user/`, `docs/intro/`, `docs/resources/`, `docs/models/`, `docs/etc/`. New sections get a new folder |
 | Element reference page | `docs/etc/style-guide.md` |
 | Page and section templates | `templates/part.md`, `templates/section.md`, `templates/model.md`, `templates/placeholder.md` |
 | Template checker, run by `make check` | `tools/lint_content.py` |
@@ -209,7 +209,7 @@ The look is OpenAI's Spinning Up: the Read the Docs theme plus `docs/_static/css
 | Content column | `#fcfcfc`, 800px wide, beside a 300px sidebar |
 | Callout title bar | `#2e95d3` with white bold text |
 | Inline code | `#e74c3c` on white with a `#e1e4e5` border (theme default) |
-| AUB maroon | `#840132` (`--color--maroon`), used only in the logo and the landing banner |
+| AUB maroon | `#840132` (`--color--maroon`), used only in the logo |
 
 The landing page is, in order: the `#` title, the banner image, then the `toctree` blocks. Nothing else goes on it.
 

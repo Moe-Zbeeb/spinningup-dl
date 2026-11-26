@@ -44,7 +44,6 @@ docs/
   intro/                Introduction to Deep Learning
   resources/            Resources
   models/               Models Docs
-  utils/                Utilities Docs
   etc/                  Acknowledgements, About, element reference
   _static/css/modify.css  all styling, ported from Spinning Up
   _static/img/          images
@@ -62,4 +61,4 @@ Every push to `main` runs `.github/workflows/deploy.yml`, which builds the site 
 
 ## Credits
 
-Named after and modelled on [Spinning Up in Deep RL](https://spinningup.openai.com/) by Joshua Achiam (OpenAI, MIT License). The stylesheet is a port of Spinning Up's; the name, logo, and banner are AUB Frontier AI Fellows.
+Named after and modelled on [Spinning Up in Deep RL](https://spinningup.openai.com/) by Joshua Achiam (OpenAI, MIT License). The course follows the topics of Andrew Ng's Deep Learning Specialization; see the Acknowledgements page for full credits. The stylesheet is a port of Spinning Up's; the name and logo are AUB Frontier AI Fellows.

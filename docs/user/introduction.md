@@ -13,8 +13,7 @@ The resource is organised the way OpenAI's [Spinning Up in Deep RL](https://spin
 - a five-part [introduction](../intro/neural_networks.md) that goes from logistic regression to convolutional and sequence models,
 - an [essay](../resources/researcher.md) about growing into a deep learning research role,
 - a [curated list](../resources/keypapers.md) of important papers organised by topic,
-- well-documented, standalone implementations of [key models](models.md),
-- and a few [exercises](../resources/exercises.md) to serve as warm-ups.
+- and well-documented, standalone implementations of [key models](models.md).
 
 ## Why We Built This
 

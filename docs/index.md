@@ -1,7 +1,7 @@
 # Welcome to Spinning Up in Deep Learning!
 
 ```{image} _static/img/banner.svg
-:alt: A small image of the digit seven feeds a neural network. One path of units lights up and the output peaks on a single class.
+:alt: An abstract illustration of a deep network: a pixel image of a digit passes through stacks of convolutional feature maps and a fully connected network to a set of output probabilities, under a falling training curve.
 :width: 100%
 ```
 
@@ -34,8 +34,6 @@ intro/sequence_models
 
 resources/researcher
 resources/keypapers
-resources/exercises
-resources/bench
 ```
 
 ```{toctree}
@@ -48,15 +46,6 @@ models/rnn
 models/transformer
 models/vae
 models/diffusion
-```
-
-```{toctree}
-:maxdepth: 2
-:caption: Utilities Docs
-
-utils/logger
-utils/plotter
-utils/run_utils
 ```
 
 ```{toctree}
