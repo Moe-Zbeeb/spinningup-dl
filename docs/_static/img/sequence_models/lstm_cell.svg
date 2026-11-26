@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 870 370" role="img" aria-labelledby="t d">
+<title id="t">The LSTM cell</title>
+<desc id="d">The memory cell c runs straight across the top. The forget gate multiplies the old memory, the update gate times the candidate is added to it, giving the new memory. The new memory goes through tanh and is multiplied by the output gate to give the activation a. All four gates read the previous activation and the current input.</desc>
+<rect x="120" y="40" width="620" height="270" rx="16" fill="#fafafa" stroke="#404452" stroke-width="1.4"/>
+<text x="140" y="66" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#000" text-anchor="start">LSTM cell</text>
+<line x1="20" y1="100" x2="216.0" y2="100.0" stroke="#404452" stroke-width="2.4"/>
+<path d="M225.0 100.0 L216.0 104.5 L216.0 95.5 z" fill="#404452"/>
+<text x="60" y="90" font-family="STIX Two Text, Latin Modern Roman, Times New Roman, Times, serif" font-size="17" font-style="italic" fill="#000" text-anchor="middle">c<tspan font-size="11" dy="-6">⟨t−1⟩</tspan></text>
+<circle cx="250" cy="100" r="22" fill="#ffffff" stroke="#840132" stroke-width="2"/>
+<text x="250" y="107" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#840132" text-anchor="middle">×</text>
+<line x1="272" y1="100" x2="439.0" y2="100.0" stroke="#404452" stroke-width="2.4"/>
+<path d="M448.0 100.0 L439.0 104.5 L439.0 95.5 z" fill="#404452"/>
+<circle cx="470" cy="100" r="22" fill="#ffffff" stroke="#10a37f" stroke-width="2"/>
+<text x="470" y="107" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="24" fill="#10a37f" text-anchor="middle">+</text>
+<line x1="492" y1="100" x2="841.0" y2="100.0" stroke="#404452" stroke-width="2.4"/>
+<path d="M850.0 100.0 L841.0 104.5 L841.0 95.5 z" fill="#404452"/>
+<text x="800" y="90" font-family="STIX Two Text, Latin Modern Roman, Times New Roman, Times, serif" font-size="17" font-style="italic" fill="#000" text-anchor="middle">c<tspan font-size="11" dy="-6">⟨t⟩</tspan></text>
+<text x="360" y="132" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" fill="#404452" text-anchor="middle">memory cell: the long-term path</text>
+<rect x="170" y="210" width="100" height="44" rx="8" fill="#ffffff" stroke="#840132" stroke-width="1.8"/>
+<text x="220.0" y="236.9" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" fill="#000" text-anchor="middle">forget</text>
+<text x="220" y="280" font-family="STIX Two Text, Latin Modern Roman, Times New Roman, Times, serif" font-size="17" font-style="italic" fill="#840132" text-anchor="middle">Γ<tspan font-size="12" dy="4">f</tspan></text>
+<rect x="300" y="210" width="100" height="44" rx="8" fill="#ffffff" stroke="#10a37f" stroke-width="1.8"/>
+<text x="350.0" y="236.9" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" fill="#000" text-anchor="middle">update</text>
+<text x="350" y="280" font-family="STIX Two Text, Latin Modern Roman, Times New Roman, Times, serif" font-size="17" font-style="italic" fill="#10a37f" text-anchor="middle">Γ<tspan font-size="12" dy="4">u</tspan></text>
+<rect x="430" y="210" width="100" height="44" rx="8" fill="#ffffff" stroke="#2e95d3" stroke-width="1.8"/>
+<text x="480.0" y="236.9" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" fill="#000" text-anchor="middle">candidate</text>
+<text x="480" y="280" font-family="STIX Two Text, Latin Modern Roman, Times New Roman, Times, serif" font-size="17" font-style="italic" fill="#2e95d3" text-anchor="middle">c̃</text>
+<rect x="560" y="210" width="100" height="44" rx="8" fill="#ffffff" stroke="#e86c09" stroke-width="1.8"/>
+<text x="610.0" y="236.9" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" fill="#000" text-anchor="middle">output</text>
+<text x="610" y="280" font-family="STIX Two Text, Latin Modern Roman, Times New Roman, Times, serif" font-size="17" font-style="italic" fill="#e86c09" text-anchor="middle">Γ<tspan font-size="12" dy="4">o</tspan></text>
+<polyline points="220,210 220,180 250,180 250,124" fill="none" stroke="#840132" stroke-width="1.8"/>
+<line x1="250" y1="140" x2="250.0" y2="133.0" stroke="#840132" stroke-width="1.8"/>
+<path d="M250.0 124.0 L254.5 133.0 L245.5 133.0 z" fill="#840132"/>
+<circle cx="420" cy="160" r="20" fill="#ffffff" stroke="#10a37f" stroke-width="2"/>
+<text x="420" y="167" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="20" fill="#10a37f" text-anchor="middle">×</text>
+<line x1="355" y1="210" x2="398.6" y2="179.2" stroke="#10a37f" stroke-width="1.8"/>
+<path d="M406.0 174.0 L401.2 182.9 L396.1 175.5 z" fill="#10a37f"/>
+<line x1="475" y1="210" x2="440.8" y2="179.9" stroke="#2e95d3" stroke-width="1.8"/>
+<path d="M434.0 174.0 L443.7 176.6 L437.8 183.3 z" fill="#2e95d3"/>
+<line x1="436" y1="146" x2="452.2" y2="126.9" stroke="#10a37f" stroke-width="1.8"/>
+<path d="M458.0 120.0 L455.6 129.8 L448.8 124.0 z" fill="#10a37f"/>
+<rect x="620" y="140" width="70" height="36" rx="8" fill="#ffffff" stroke="#404452" stroke-width="1.8"/>
+<text x="655.0" y="162.6" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" fill="#000" text-anchor="middle">tanh</text>
+<line x1="655" y1="100" x2="655.0" y2="131.0" stroke="#404452" stroke-width="1.8"/>
+<path d="M655.0 140.0 L650.5 131.0 L659.5 131.0 z" fill="#404452"/>
+<circle cx="655" cy="196" r="0" fill="none"/>
+<circle cx="720" cy="196" r="18" fill="#ffffff" stroke="#e86c09" stroke-width="2"/>
+<text x="720" y="203" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="20" fill="#e86c09" text-anchor="middle">×</text>
+<line x1="690" y1="158" x2="701.8" y2="174.7" stroke="#404452" stroke-width="1.8"/>
+<path d="M707.0 182.0 L698.1 177.3 L705.5 172.1 z" fill="#404452"/>
+<line x1="660" y1="222" x2="694.8" y2="205.8" stroke="#e86c09" stroke-width="1.8"/>
+<path d="M703.0 202.0 L696.7 209.9 L692.9 201.7 z" fill="#e86c09"/>
+<line x1="738" y1="196" x2="841.0" y2="196.0" stroke="#404452" stroke-width="2.4"/>
+<path d="M850.0 196.0 L841.0 200.5 L841.0 191.5 z" fill="#404452"/>
+<text x="800" y="186" font-family="STIX Two Text, Latin Modern Roman, Times New Roman, Times, serif" font-size="17" font-style="italic" fill="#000" text-anchor="middle">a<tspan font-size="11" dy="-6">⟨t⟩</tspan></text>
+<line x1="20" y1="330" x2="241.0" y2="330.0" stroke="#404452" stroke-width="2"/>
+<path d="M250.0 330.0 L241.0 334.5 L241.0 325.5 z" fill="#404452"/>
+<text x="60" y="350" font-family="STIX Two Text, Latin Modern Roman, Times New Roman, Times, serif" font-size="16" font-style="italic" fill="#000" text-anchor="middle">a<tspan font-size="11" dy="-6">⟨t−1⟩</tspan>, x<tspan font-size="11" dy="-6">⟨t⟩</tspan></text>
+<line x1="250" y1="330" x2="610" y2="330" stroke="#404452" stroke-width="2"/>
+<line x1="220" y1="330" x2="220" y2="256" stroke="#404452" stroke-width="1.6"/>
+<line x1="350" y1="330" x2="350" y2="256" stroke="#404452" stroke-width="1.6"/>
+<line x1="480" y1="330" x2="480" y2="256" stroke="#404452" stroke-width="1.6"/>
+<line x1="610" y1="330" x2="610" y2="256" stroke="#404452" stroke-width="1.6"/>
+</svg>

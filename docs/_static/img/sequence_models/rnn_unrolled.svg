@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 312" role="img" aria-labelledby="t d">
+<title id="t">A recurrent neural network unrolled in time</title>
+<desc id="d">A row of identical RNN cells. Each cell takes the input x at its time step from below and the previous activation a from the left, outputs a prediction y hat above, and passes its activation to the next cell. The same weights are used at every step.</desc>
+<rect x="10" y="120" width="80" height="50" rx="8" fill="#ffffff" stroke="#404452" stroke-width="1.8"/>
+<text x="50.0" y="151.3" font-family="STIX Two Text, Latin Modern Roman, Times New Roman, Times, serif" font-size="18" font-style="italic" fill="#000" text-anchor="middle">a<tspan font-size="11" dy="-6">⟨0⟩</tspan></text>
+<rect x="150" y="110" width="110" height="70" rx="8" fill="#eef6fb" stroke="#404452" stroke-width="1.8"/>
+<text x="205.0" y="150.2" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" fill="#000" text-anchor="middle">RNN cell</text>
+<rect x="170" y="230" width="70" height="44" rx="8" fill="#ffffff" stroke="#404452" stroke-width="1.8"/>
+<text x="205.0" y="258.3" font-family="STIX Two Text, Latin Modern Roman, Times New Roman, Times, serif" font-size="18" font-style="italic" fill="#000" text-anchor="middle">x<tspan font-size="11" dy="-6">⟨1⟩</tspan></text>
+<rect x="170" y="20" width="70" height="44" rx="8" fill="#ffffff" stroke="#404452" stroke-width="1.8"/>
+<text x="205.0" y="48.3" font-family="STIX Two Text, Latin Modern Roman, Times New Roman, Times, serif" font-size="18" font-style="italic" fill="#000" text-anchor="middle">ŷ<tspan font-size="11" dy="-6">⟨1⟩</tspan></text>
+<line x1="205" y1="230" x2="205.0" y2="191.0" stroke="#404452" stroke-width="1.8"/>
+<path d="M205.0 182.0 L209.5 191.0 L200.5 191.0 z" fill="#404452"/>
+<line x1="205" y1="110" x2="205.0" y2="75.0" stroke="#404452" stroke-width="1.8"/>
+<path d="M205.0 66.0 L209.5 75.0 L200.5 75.0 z" fill="#404452"/>
+<text x="232" y="210" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" fill="#8e8ea0" text-anchor="middle">W_ax</text>
+<text x="230" y="92" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" fill="#8e8ea0" text-anchor="middle">W_ya</text>
+<rect x="330" y="110" width="110" height="70" rx="8" fill="#eef6fb" stroke="#404452" stroke-width="1.8"/>
+<text x="385.0" y="150.2" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" fill="#000" text-anchor="middle">RNN cell</text>
+<rect x="350" y="230" width="70" height="44" rx="8" fill="#ffffff" stroke="#404452" stroke-width="1.8"/>
+<text x="385.0" y="258.3" font-family="STIX Two Text, Latin Modern Roman, Times New Roman, Times, serif" font-size="18" font-style="italic" fill="#000" text-anchor="middle">x<tspan font-size="11" dy="-6">⟨2⟩</tspan></text>
+<rect x="350" y="20" width="70" height="44" rx="8" fill="#ffffff" stroke="#404452" stroke-width="1.8"/>
+<text x="385.0" y="48.3" font-family="STIX Two Text, Latin Modern Roman, Times New Roman, Times, serif" font-size="18" font-style="italic" fill="#000" text-anchor="middle">ŷ<tspan font-size="11" dy="-6">⟨2⟩</tspan></text>
+<line x1="385" y1="230" x2="385.0" y2="191.0" stroke="#404452" stroke-width="1.8"/>
+<path d="M385.0 182.0 L389.5 191.0 L380.5 191.0 z" fill="#404452"/>
+<line x1="385" y1="110" x2="385.0" y2="75.0" stroke="#404452" stroke-width="1.8"/>
+<path d="M385.0 66.0 L389.5 75.0 L380.5 75.0 z" fill="#404452"/>
+<text x="412" y="210" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" fill="#8e8ea0" text-anchor="middle">W_ax</text>
+<text x="410" y="92" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" fill="#8e8ea0" text-anchor="middle">W_ya</text>
+<rect x="510" y="110" width="110" height="70" rx="8" fill="#eef6fb" stroke="#404452" stroke-width="1.8"/>
+<text x="565.0" y="150.2" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" fill="#000" text-anchor="middle">RNN cell</text>
+<rect x="530" y="230" width="70" height="44" rx="8" fill="#ffffff" stroke="#404452" stroke-width="1.8"/>
+<text x="565.0" y="258.3" font-family="STIX Two Text, Latin Modern Roman, Times New Roman, Times, serif" font-size="18" font-style="italic" fill="#000" text-anchor="middle">x<tspan font-size="11" dy="-6">⟨3⟩</tspan></text>
+<rect x="530" y="20" width="70" height="44" rx="8" fill="#ffffff" stroke="#404452" stroke-width="1.8"/>
+<text x="565.0" y="48.3" font-family="STIX Two Text, Latin Modern Roman, Times New Roman, Times, serif" font-size="18" font-style="italic" fill="#000" text-anchor="middle">ŷ<tspan font-size="11" dy="-6">⟨3⟩</tspan></text>
+<line x1="565" y1="230" x2="565.0" y2="191.0" stroke="#404452" stroke-width="1.8"/>
+<path d="M565.0 182.0 L569.5 191.0 L560.5 191.0 z" fill="#404452"/>
+<line x1="565" y1="110" x2="565.0" y2="75.0" stroke="#404452" stroke-width="1.8"/>
+<path d="M565.0 66.0 L569.5 75.0 L560.5 75.0 z" fill="#404452"/>
+<text x="592" y="210" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" fill="#8e8ea0" text-anchor="middle">W_ax</text>
+<text x="590" y="92" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" fill="#8e8ea0" text-anchor="middle">W_ya</text>
+<rect x="760" y="110" width="110" height="70" rx="8" fill="#eef6fb" stroke="#404452" stroke-width="1.8"/>
+<text x="815.0" y="150.2" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" fill="#000" text-anchor="middle">RNN cell</text>
+<rect x="780" y="230" width="70" height="44" rx="8" fill="#ffffff" stroke="#404452" stroke-width="1.8"/>
+<text x="815.0" y="258.3" font-family="STIX Two Text, Latin Modern Roman, Times New Roman, Times, serif" font-size="18" font-style="italic" fill="#000" text-anchor="middle">x<tspan font-size="11" dy="-6">⟨T⟩</tspan></text>
+<rect x="780" y="20" width="70" height="44" rx="8" fill="#ffffff" stroke="#404452" stroke-width="1.8"/>
+<text x="815.0" y="48.3" font-family="STIX Two Text, Latin Modern Roman, Times New Roman, Times, serif" font-size="18" font-style="italic" fill="#000" text-anchor="middle">ŷ<tspan font-size="11" dy="-6">⟨T⟩</tspan></text>
+<line x1="815" y1="230" x2="815.0" y2="191.0" stroke="#404452" stroke-width="1.8"/>
+<path d="M815.0 182.0 L819.5 191.0 L810.5 191.0 z" fill="#404452"/>
+<line x1="815" y1="110" x2="815.0" y2="75.0" stroke="#404452" stroke-width="1.8"/>
+<path d="M815.0 66.0 L819.5 75.0 L810.5 75.0 z" fill="#404452"/>
+<text x="842" y="210" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" fill="#8e8ea0" text-anchor="middle">W_ax</text>
+<text x="840" y="92" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" fill="#8e8ea0" text-anchor="middle">W_ya</text>
+<line x1="90" y1="145" x2="141.0" y2="145.0" stroke="#404452" stroke-width="1.8"/>
+<path d="M150.0 145.0 L141.0 149.5 L141.0 140.5 z" fill="#404452"/>
+<text x="120" y="136" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" fill="#8e8ea0" text-anchor="middle">W_aa</text>
+<line x1="260" y1="145" x2="321.0" y2="145.0" stroke="#404452" stroke-width="1.8"/>
+<path d="M330.0 145.0 L321.0 149.5 L321.0 140.5 z" fill="#404452"/>
+<text x="295.0" y="136" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" fill="#8e8ea0" text-anchor="middle">W_aa</text>
+<line x1="440" y1="145" x2="501.0" y2="145.0" stroke="#404452" stroke-width="1.8"/>
+<path d="M510.0 145.0 L501.0 149.5 L501.0 140.5 z" fill="#404452"/>
+<text x="475.0" y="136" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" fill="#8e8ea0" text-anchor="middle">W_aa</text>
+<line x1="620" y1="145" x2="641.0" y2="145.0" stroke="#404452" stroke-width="1.8"/>
+<path d="M650.0 145.0 L641.0 149.5 L641.0 140.5 z" fill="#404452"/>
+<text x="690" y="150" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#000" text-anchor="middle">· · ·</text>
+<line x1="720" y1="145" x2="751.0" y2="145.0" stroke="#404452" stroke-width="1.8"/>
+<path d="M760.0 145.0 L751.0 149.5 L751.0 140.5 z" fill="#404452"/>
+<text x="275" y="165" font-family="STIX Two Text, Latin Modern Roman, Times New Roman, Times, serif" font-size="14" font-style="italic" fill="#000" text-anchor="middle">a<tspan font-size="11" dy="-6">⟨1⟩</tspan></text>
+<text x="455" y="165" font-family="STIX Two Text, Latin Modern Roman, Times New Roman, Times, serif" font-size="14" font-style="italic" fill="#000" text-anchor="middle">a<tspan font-size="11" dy="-6">⟨2⟩</tspan></text>
+<text x="645" y="165" font-family="STIX Two Text, Latin Modern Roman, Times New Roman, Times, serif" font-size="14" font-style="italic" fill="#000" text-anchor="middle">a<tspan font-size="11" dy="-6">⟨3⟩</tspan></text>
+<text x="445" y="300" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#840132" text-anchor="middle">the same weights W_aa, W_ax, W_ya are used at every time step</text>
+</svg>

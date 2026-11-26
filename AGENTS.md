@@ -108,6 +108,11 @@ The notes use plain-text shorthand. Typeset it as follows, on every page.
 | `f[l]`, `p[l]`, `s[l]` | $f^{[l]}$, $p^{[l]}$, $s^{[l]}$ | Filter size, padding, and stride of a convolutional layer |
 | `nH`, `nW`, `nC` | $n_H$, $n_W$, $n_C$ | Height, width, and number of channels of a volume |
 | `bx, by, bh, bw`, `pc` | $b_x, b_y, b_h, b_w$, $p_c$ | Bounding box center, height, width, and the probability that an object is present |
+| `a[l]<t>`, `x(i)<t>` | $a^{[l]\langle t \rangle}$, $x^{(i)\langle t \rangle}$ | Activation of layer $l$ at time $t$; input $t$ of example $i$ |
+| `Tx`, `Ty` | $T_x$, $T_y$ | Lengths of the input and output sequences |
+| `Γu`, `Γf`, `Γo`, `Γr` | $\Gamma_u$, $\Gamma_f$, $\Gamma_o$, $\Gamma_r$ | The update, forget, output, and relevance gates |
+| `e_w`, `E`, `o_j` | $e_w$, $E$, $o_j$ | The embedding of word $w$, the embedding matrix, the one-hot vector of word $j$ |
+| `α<t,t'>`, `c<t>` | $\alpha^{\langle t, t' \rangle}$, $c^{\langle t \rangle}$ | Attention weight of output step $t$ on input step $t'$; the context, or for GRUs and LSTMs the memory cell |
 | `σ(z)`, `tanh(z)` | $\sigma(z)$, $\tanh(z)$ | The sigmoid and tanh activation functions |
 | `ReLU(z)`, `LReLU(z)` | $\mathrm{ReLU}(z)$, $\mathrm{LReLU}(z)$ | The ReLU and leaky ReLU activation functions |
 | `σ'(z)`, `ReLU'(z)` | $\sigma'(z)$, $\mathrm{ReLU}'(z)$ | The derivative of an activation function |

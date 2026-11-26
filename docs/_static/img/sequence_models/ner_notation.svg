@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 186" role="img" aria-labelledby="t d">
+<title id="t">Inputs and labels for a named entity recognition example</title>
+<desc id="d">The sentence Layla and Karim visited Beirut in March, one word per box labeled x 1 to x 7, with a label below each word: 1 under Layla and Karim, which are people's names, and 0 under every other word.</desc>
+<text x="78" y="28" font-family="STIX Two Text, Latin Modern Roman, Times New Roman, Times, serif" font-size="17" font-style="italic" fill="#000" text-anchor="middle">x<tspan font-size="11" dy="-6">⟨1⟩</tspan></text>
+<rect x="20" y="40" width="116" height="44" rx="8" fill="#ffffff" stroke="#404452" stroke-width="1.8"/>
+<text x="78.0" y="67.2" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" fill="#000" text-anchor="middle">Layla</text>
+<rect x="20" y="104" width="116" height="44" rx="8" fill="#fbeef2" stroke="#840132" stroke-width="1.8"/>
+<text x="78.0" y="131.2" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#000" text-anchor="middle">1</text>
+<text x="78" y="172" font-family="STIX Two Text, Latin Modern Roman, Times New Roman, Times, serif" font-size="17" font-style="italic" fill="#000" text-anchor="middle">y<tspan font-size="11" dy="-6">⟨1⟩</tspan></text>
+<text x="206" y="28" font-family="STIX Two Text, Latin Modern Roman, Times New Roman, Times, serif" font-size="17" font-style="italic" fill="#000" text-anchor="middle">x<tspan font-size="11" dy="-6">⟨2⟩</tspan></text>
+<rect x="148" y="40" width="116" height="44" rx="8" fill="#ffffff" stroke="#404452" stroke-width="1.8"/>
+<text x="206.0" y="67.2" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" fill="#000" text-anchor="middle">and</text>
+<rect x="148" y="104" width="116" height="44" rx="8" fill="#eef6fb" stroke="#404452" stroke-width="1.8"/>
+<text x="206.0" y="131.2" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" fill="#000" text-anchor="middle">0</text>
+<text x="206" y="172" font-family="STIX Two Text, Latin Modern Roman, Times New Roman, Times, serif" font-size="17" font-style="italic" fill="#000" text-anchor="middle">y<tspan font-size="11" dy="-6">⟨2⟩</tspan></text>
+<text x="334" y="28" font-family="STIX Two Text, Latin Modern Roman, Times New Roman, Times, serif" font-size="17" font-style="italic" fill="#000" text-anchor="middle">x<tspan font-size="11" dy="-6">⟨3⟩</tspan></text>
+<rect x="276" y="40" width="116" height="44" rx="8" fill="#ffffff" stroke="#404452" stroke-width="1.8"/>
+<text x="334.0" y="67.2" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" fill="#000" text-anchor="middle">Karim</text>
+<rect x="276" y="104" width="116" height="44" rx="8" fill="#fbeef2" stroke="#840132" stroke-width="1.8"/>
+<text x="334.0" y="131.2" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#000" text-anchor="middle">1</text>
+<text x="334" y="172" font-family="STIX Two Text, Latin Modern Roman, Times New Roman, Times, serif" font-size="17" font-style="italic" fill="#000" text-anchor="middle">y<tspan font-size="11" dy="-6">⟨3⟩</tspan></text>
+<text x="462" y="28" font-family="STIX Two Text, Latin Modern Roman, Times New Roman, Times, serif" font-size="17" font-style="italic" fill="#000" text-anchor="middle">x<tspan font-size="11" dy="-6">⟨4⟩</tspan></text>
+<rect x="404" y="40" width="116" height="44" rx="8" fill="#ffffff" stroke="#404452" stroke-width="1.8"/>
+<text x="462.0" y="67.2" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" fill="#000" text-anchor="middle">visited</text>
+<rect x="404" y="104" width="116" height="44" rx="8" fill="#eef6fb" stroke="#404452" stroke-width="1.8"/>
+<text x="462.0" y="131.2" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" fill="#000" text-anchor="middle">0</text>
+<text x="462" y="172" font-family="STIX Two Text, Latin Modern Roman, Times New Roman, Times, serif" font-size="17" font-style="italic" fill="#000" text-anchor="middle">y<tspan font-size="11" dy="-6">⟨4⟩</tspan></text>
+<text x="590" y="28" font-family="STIX Two Text, Latin Modern Roman, Times New Roman, Times, serif" font-size="17" font-style="italic" fill="#000" text-anchor="middle">x<tspan font-size="11" dy="-6">⟨5⟩</tspan></text>
+<rect x="532" y="40" width="116" height="44" rx="8" fill="#ffffff" stroke="#404452" stroke-width="1.8"/>
+<text x="590.0" y="67.2" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" fill="#000" text-anchor="middle">Beirut</text>
+<rect x="532" y="104" width="116" height="44" rx="8" fill="#eef6fb" stroke="#404452" stroke-width="1.8"/>
+<text x="590.0" y="131.2" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" fill="#000" text-anchor="middle">0</text>
+<text x="590" y="172" font-family="STIX Two Text, Latin Modern Roman, Times New Roman, Times, serif" font-size="17" font-style="italic" fill="#000" text-anchor="middle">y<tspan font-size="11" dy="-6">⟨5⟩</tspan></text>
+<text x="718" y="28" font-family="STIX Two Text, Latin Modern Roman, Times New Roman, Times, serif" font-size="17" font-style="italic" fill="#000" text-anchor="middle">x<tspan font-size="11" dy="-6">⟨6⟩</tspan></text>
+<rect x="660" y="40" width="116" height="44" rx="8" fill="#ffffff" stroke="#404452" stroke-width="1.8"/>
+<text x="718.0" y="67.2" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" fill="#000" text-anchor="middle">in</text>
+<rect x="660" y="104" width="116" height="44" rx="8" fill="#eef6fb" stroke="#404452" stroke-width="1.8"/>
+<text x="718.0" y="131.2" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" fill="#000" text-anchor="middle">0</text>
+<text x="718" y="172" font-family="STIX Two Text, Latin Modern Roman, Times New Roman, Times, serif" font-size="17" font-style="italic" fill="#000" text-anchor="middle">y<tspan font-size="11" dy="-6">⟨6⟩</tspan></text>
+<text x="846" y="28" font-family="STIX Two Text, Latin Modern Roman, Times New Roman, Times, serif" font-size="17" font-style="italic" fill="#000" text-anchor="middle">x<tspan font-size="11" dy="-6">⟨7⟩</tspan></text>
+<rect x="788" y="40" width="116" height="44" rx="8" fill="#ffffff" stroke="#404452" stroke-width="1.8"/>
+<text x="846.0" y="67.2" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" fill="#000" text-anchor="middle">March</text>
+<rect x="788" y="104" width="116" height="44" rx="8" fill="#eef6fb" stroke="#404452" stroke-width="1.8"/>
+<text x="846.0" y="131.2" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" fill="#000" text-anchor="middle">0</text>
+<text x="846" y="172" font-family="STIX Two Text, Latin Modern Roman, Times New Roman, Times, serif" font-size="17" font-style="italic" fill="#000" text-anchor="middle">y<tspan font-size="11" dy="-6">⟨7⟩</tspan></text>
+</svg>

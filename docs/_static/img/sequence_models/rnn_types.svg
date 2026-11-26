@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1304.5 208" role="img" aria-labelledby="t d">
+<title id="t">Types of recurrent neural network architectures</title>
+<desc id="d">Five small diagrams: one to one with a single input and output; one to many with one input and four outputs; many to one with four inputs and one output at the end; many to many with an output at every input; and an encoder-decoder with three inputs followed by three outputs.</desc>
+<text x="57.5" y="22" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#000" text-anchor="middle">One to one</text>
+<rect x="41.5" y="80" width="32" height="32" rx="6" fill="#eef6fb" stroke="#404452" stroke-width="1.6"/>
+<rect x="47.5" y="140" width="20" height="20" rx="4" fill="#ffffff" stroke="#2e95d3" stroke-width="1.6"/>
+<line x1="57.5" y1="140" x2="57.5" y2="123.0" stroke="#2e95d3" stroke-width="1.4"/>
+<path d="M57.5 114.0 L62.0 123.0 L53.0 123.0 z" fill="#2e95d3"/>
+<rect x="47.5" y="34" width="20" height="20" rx="4" fill="#ffffff" stroke="#840132" stroke-width="1.6"/>
+<line x1="57.5" y1="80" x2="57.5" y2="65.0" stroke="#840132" stroke-width="1.4"/>
+<path d="M57.5 56.0 L62.0 65.0 L53.0 65.0 z" fill="#840132"/>
+<text x="260.0" y="22" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#000" text-anchor="middle">One to many</text>
+<rect x="175.0" y="80" width="32" height="32" rx="6" fill="#eef6fb" stroke="#404452" stroke-width="1.6"/>
+<rect x="181.0" y="140" width="20" height="20" rx="4" fill="#ffffff" stroke="#2e95d3" stroke-width="1.6"/>
+<line x1="191.0" y1="140" x2="191.0" y2="123.0" stroke="#2e95d3" stroke-width="1.4"/>
+<path d="M191.0 114.0 L195.5 123.0 L186.5 123.0 z" fill="#2e95d3"/>
+<rect x="181.0" y="34" width="20" height="20" rx="4" fill="#ffffff" stroke="#840132" stroke-width="1.6"/>
+<line x1="191.0" y1="80" x2="191.0" y2="65.0" stroke="#840132" stroke-width="1.4"/>
+<path d="M191.0 56.0 L195.5 65.0 L186.5 65.0 z" fill="#840132"/>
+<rect x="221.0" y="80" width="32" height="32" rx="6" fill="#eef6fb" stroke="#404452" stroke-width="1.6"/>
+<rect x="227.0" y="34" width="20" height="20" rx="4" fill="#ffffff" stroke="#840132" stroke-width="1.6"/>
+<line x1="237.0" y1="80" x2="237.0" y2="65.0" stroke="#840132" stroke-width="1.4"/>
+<path d="M237.0 56.0 L241.5 65.0 L232.5 65.0 z" fill="#840132"/>
+<line x1="207.0" y1="96" x2="212.0" y2="96.0" stroke="#404452" stroke-width="1.4"/>
+<path d="M221.0 96.0 L212.0 100.5 L212.0 91.5 z" fill="#404452"/>
+<rect x="267.0" y="80" width="32" height="32" rx="6" fill="#eef6fb" stroke="#404452" stroke-width="1.6"/>
+<rect x="273.0" y="34" width="20" height="20" rx="4" fill="#ffffff" stroke="#840132" stroke-width="1.6"/>
+<line x1="283.0" y1="80" x2="283.0" y2="65.0" stroke="#840132" stroke-width="1.4"/>
+<path d="M283.0 56.0 L287.5 65.0 L278.5 65.0 z" fill="#840132"/>
+<line x1="253.0" y1="96" x2="258.0" y2="96.0" stroke="#404452" stroke-width="1.4"/>
+<path d="M267.0 96.0 L258.0 100.5 L258.0 91.5 z" fill="#404452"/>
+<rect x="313.0" y="80" width="32" height="32" rx="6" fill="#eef6fb" stroke="#404452" stroke-width="1.6"/>
+<rect x="319.0" y="34" width="20" height="20" rx="4" fill="#ffffff" stroke="#840132" stroke-width="1.6"/>
+<line x1="329.0" y1="80" x2="329.0" y2="65.0" stroke="#840132" stroke-width="1.4"/>
+<path d="M329.0 56.0 L333.5 65.0 L324.5 65.0 z" fill="#840132"/>
+<line x1="299.0" y1="96" x2="304.0" y2="96.0" stroke="#404452" stroke-width="1.4"/>
+<path d="M313.0 96.0 L304.0 100.5 L304.0 91.5 z" fill="#404452"/>
+<text x="510.0" y="22" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#000" text-anchor="middle">Many to one</text>
+<rect x="425.0" y="80" width="32" height="32" rx="6" fill="#eef6fb" stroke="#404452" stroke-width="1.6"/>
+<rect x="431.0" y="140" width="20" height="20" rx="4" fill="#ffffff" stroke="#2e95d3" stroke-width="1.6"/>
+<line x1="441.0" y1="140" x2="441.0" y2="123.0" stroke="#2e95d3" stroke-width="1.4"/>
+<path d="M441.0 114.0 L445.5 123.0 L436.5 123.0 z" fill="#2e95d3"/>
+<rect x="471.0" y="80" width="32" height="32" rx="6" fill="#eef6fb" stroke="#404452" stroke-width="1.6"/>
+<rect x="477.0" y="140" width="20" height="20" rx="4" fill="#ffffff" stroke="#2e95d3" stroke-width="1.6"/>
+<line x1="487.0" y1="140" x2="487.0" y2="123.0" stroke="#2e95d3" stroke-width="1.4"/>
+<path d="M487.0 114.0 L491.5 123.0 L482.5 123.0 z" fill="#2e95d3"/>
+<line x1="457.0" y1="96" x2="462.0" y2="96.0" stroke="#404452" stroke-width="1.4"/>
+<path d="M471.0 96.0 L462.0 100.5 L462.0 91.5 z" fill="#404452"/>
+<rect x="517.0" y="80" width="32" height="32" rx="6" fill="#eef6fb" stroke="#404452" stroke-width="1.6"/>
+<rect x="523.0" y="140" width="20" height="20" rx="4" fill="#ffffff" stroke="#2e95d3" stroke-width="1.6"/>
+<line x1="533.0" y1="140" x2="533.0" y2="123.0" stroke="#2e95d3" stroke-width="1.4"/>
+<path d="M533.0 114.0 L537.5 123.0 L528.5 123.0 z" fill="#2e95d3"/>
+<line x1="503.0" y1="96" x2="508.0" y2="96.0" stroke="#404452" stroke-width="1.4"/>
+<path d="M517.0 96.0 L508.0 100.5 L508.0 91.5 z" fill="#404452"/>
+<rect x="563.0" y="80" width="32" height="32" rx="6" fill="#eef6fb" stroke="#404452" stroke-width="1.6"/>
+<rect x="569.0" y="140" width="20" height="20" rx="4" fill="#ffffff" stroke="#2e95d3" stroke-width="1.6"/>
+<line x1="579.0" y1="140" x2="579.0" y2="123.0" stroke="#2e95d3" stroke-width="1.4"/>
+<path d="M579.0 114.0 L583.5 123.0 L574.5 123.0 z" fill="#2e95d3"/>
+<rect x="569.0" y="34" width="20" height="20" rx="4" fill="#ffffff" stroke="#840132" stroke-width="1.6"/>
+<line x1="579.0" y1="80" x2="579.0" y2="65.0" stroke="#840132" stroke-width="1.4"/>
+<path d="M579.0 56.0 L583.5 65.0 L574.5 65.0 z" fill="#840132"/>
+<line x1="549.0" y1="96" x2="554.0" y2="96.0" stroke="#404452" stroke-width="1.4"/>
+<path d="M563.0 96.0 L554.0 100.5 L554.0 91.5 z" fill="#404452"/>
+<text x="783.75" y="22" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#000" text-anchor="middle">Many to many, same length</text>
+<rect x="698.75" y="80" width="32" height="32" rx="6" fill="#eef6fb" stroke="#404452" stroke-width="1.6"/>
+<rect x="704.75" y="140" width="20" height="20" rx="4" fill="#ffffff" stroke="#2e95d3" stroke-width="1.6"/>
+<line x1="714.75" y1="140" x2="714.8" y2="123.0" stroke="#2e95d3" stroke-width="1.4"/>
+<path d="M714.8 114.0 L719.2 123.0 L710.2 123.0 z" fill="#2e95d3"/>
+<rect x="704.75" y="34" width="20" height="20" rx="4" fill="#ffffff" stroke="#840132" stroke-width="1.6"/>
+<line x1="714.75" y1="80" x2="714.8" y2="65.0" stroke="#840132" stroke-width="1.4"/>
+<path d="M714.8 56.0 L719.2 65.0 L710.2 65.0 z" fill="#840132"/>
+<rect x="744.75" y="80" width="32" height="32" rx="6" fill="#eef6fb" stroke="#404452" stroke-width="1.6"/>
+<rect x="750.75" y="140" width="20" height="20" rx="4" fill="#ffffff" stroke="#2e95d3" stroke-width="1.6"/>
+<line x1="760.75" y1="140" x2="760.8" y2="123.0" stroke="#2e95d3" stroke-width="1.4"/>
+<path d="M760.8 114.0 L765.2 123.0 L756.2 123.0 z" fill="#2e95d3"/>
+<rect x="750.75" y="34" width="20" height="20" rx="4" fill="#ffffff" stroke="#840132" stroke-width="1.6"/>
+<line x1="760.75" y1="80" x2="760.8" y2="65.0" stroke="#840132" stroke-width="1.4"/>
+<path d="M760.8 56.0 L765.2 65.0 L756.2 65.0 z" fill="#840132"/>
+<line x1="730.75" y1="96" x2="735.8" y2="96.0" stroke="#404452" stroke-width="1.4"/>
+<path d="M744.8 96.0 L735.8 100.5 L735.8 91.5 z" fill="#404452"/>
+<rect x="790.75" y="80" width="32" height="32" rx="6" fill="#eef6fb" stroke="#404452" stroke-width="1.6"/>
+<rect x="796.75" y="140" width="20" height="20" rx="4" fill="#ffffff" stroke="#2e95d3" stroke-width="1.6"/>
+<line x1="806.75" y1="140" x2="806.8" y2="123.0" stroke="#2e95d3" stroke-width="1.4"/>
+<path d="M806.8 114.0 L811.2 123.0 L802.2 123.0 z" fill="#2e95d3"/>
+<rect x="796.75" y="34" width="20" height="20" rx="4" fill="#ffffff" stroke="#840132" stroke-width="1.6"/>
+<line x1="806.75" y1="80" x2="806.8" y2="65.0" stroke="#840132" stroke-width="1.4"/>
+<path d="M806.8 56.0 L811.2 65.0 L802.2 65.0 z" fill="#840132"/>
+<line x1="776.75" y1="96" x2="781.8" y2="96.0" stroke="#404452" stroke-width="1.4"/>
+<path d="M790.8 96.0 L781.8 100.5 L781.8 91.5 z" fill="#404452"/>
+<rect x="836.75" y="80" width="32" height="32" rx="6" fill="#eef6fb" stroke="#404452" stroke-width="1.6"/>
+<rect x="842.75" y="140" width="20" height="20" rx="4" fill="#ffffff" stroke="#2e95d3" stroke-width="1.6"/>
+<line x1="852.75" y1="140" x2="852.8" y2="123.0" stroke="#2e95d3" stroke-width="1.4"/>
+<path d="M852.8 114.0 L857.2 123.0 L848.2 123.0 z" fill="#2e95d3"/>
+<rect x="842.75" y="34" width="20" height="20" rx="4" fill="#ffffff" stroke="#840132" stroke-width="1.6"/>
+<line x1="852.75" y1="80" x2="852.8" y2="65.0" stroke="#840132" stroke-width="1.4"/>
+<path d="M852.8 56.0 L857.2 65.0 L848.2 65.0 z" fill="#840132"/>
+<line x1="822.75" y1="96" x2="827.8" y2="96.0" stroke="#404452" stroke-width="1.4"/>
+<path d="M836.8 96.0 L827.8 100.5 L827.8 91.5 z" fill="#404452"/>
+<text x="1103.5" y="22" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#000" text-anchor="middle">Many to many, encoder-decoder</text>
+<rect x="972.5" y="80" width="32" height="32" rx="6" fill="#eef6fb" stroke="#404452" stroke-width="1.6"/>
+<rect x="978.5" y="140" width="20" height="20" rx="4" fill="#ffffff" stroke="#2e95d3" stroke-width="1.6"/>
+<line x1="988.5" y1="140" x2="988.5" y2="123.0" stroke="#2e95d3" stroke-width="1.4"/>
+<path d="M988.5 114.0 L993.0 123.0 L984.0 123.0 z" fill="#2e95d3"/>
+<rect x="1018.5" y="80" width="32" height="32" rx="6" fill="#eef6fb" stroke="#404452" stroke-width="1.6"/>
+<rect x="1024.5" y="140" width="20" height="20" rx="4" fill="#ffffff" stroke="#2e95d3" stroke-width="1.6"/>
+<line x1="1034.5" y1="140" x2="1034.5" y2="123.0" stroke="#2e95d3" stroke-width="1.4"/>
+<path d="M1034.5 114.0 L1039.0 123.0 L1030.0 123.0 z" fill="#2e95d3"/>
+<line x1="1004.5" y1="96" x2="1009.5" y2="96.0" stroke="#404452" stroke-width="1.4"/>
+<path d="M1018.5 96.0 L1009.5 100.5 L1009.5 91.5 z" fill="#404452"/>
+<rect x="1064.5" y="80" width="32" height="32" rx="6" fill="#eef6fb" stroke="#404452" stroke-width="1.6"/>
+<rect x="1070.5" y="140" width="20" height="20" rx="4" fill="#ffffff" stroke="#2e95d3" stroke-width="1.6"/>
+<line x1="1080.5" y1="140" x2="1080.5" y2="123.0" stroke="#2e95d3" stroke-width="1.4"/>
+<path d="M1080.5 114.0 L1085.0 123.0 L1076.0 123.0 z" fill="#2e95d3"/>
+<line x1="1050.5" y1="96" x2="1055.5" y2="96.0" stroke="#404452" stroke-width="1.4"/>
+<path d="M1064.5 96.0 L1055.5 100.5 L1055.5 91.5 z" fill="#404452"/>
+<rect x="1110.5" y="80" width="32" height="32" rx="6" fill="#eef6fb" stroke="#404452" stroke-width="1.6"/>
+<rect x="1116.5" y="34" width="20" height="20" rx="4" fill="#ffffff" stroke="#840132" stroke-width="1.6"/>
+<line x1="1126.5" y1="80" x2="1126.5" y2="65.0" stroke="#840132" stroke-width="1.4"/>
+<path d="M1126.5 56.0 L1131.0 65.0 L1122.0 65.0 z" fill="#840132"/>
+<line x1="1096.5" y1="96" x2="1101.5" y2="96.0" stroke="#404452" stroke-width="1.4"/>
+<path d="M1110.5 96.0 L1101.5 100.5 L1101.5 91.5 z" fill="#404452"/>
+<rect x="1156.5" y="80" width="32" height="32" rx="6" fill="#eef6fb" stroke="#404452" stroke-width="1.6"/>
+<rect x="1162.5" y="34" width="20" height="20" rx="4" fill="#ffffff" stroke="#840132" stroke-width="1.6"/>
+<line x1="1172.5" y1="80" x2="1172.5" y2="65.0" stroke="#840132" stroke-width="1.4"/>
+<path d="M1172.5 56.0 L1177.0 65.0 L1168.0 65.0 z" fill="#840132"/>
+<line x1="1142.5" y1="96" x2="1147.5" y2="96.0" stroke="#404452" stroke-width="1.4"/>
+<path d="M1156.5 96.0 L1147.5 100.5 L1147.5 91.5 z" fill="#404452"/>
+<rect x="1202.5" y="80" width="32" height="32" rx="6" fill="#eef6fb" stroke="#404452" stroke-width="1.6"/>
+<rect x="1208.5" y="34" width="20" height="20" rx="4" fill="#ffffff" stroke="#840132" stroke-width="1.6"/>
+<line x1="1218.5" y1="80" x2="1218.5" y2="65.0" stroke="#840132" stroke-width="1.4"/>
+<path d="M1218.5 56.0 L1223.0 65.0 L1214.0 65.0 z" fill="#840132"/>
+<line x1="1188.5" y1="96" x2="1193.5" y2="96.0" stroke="#404452" stroke-width="1.4"/>
+<path d="M1202.5 96.0 L1193.5 100.5 L1193.5 91.5 z" fill="#404452"/>
+<text x="652.25" y="196" font-family="Lato, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" fill="#404452" text-anchor="middle">blue: inputs  ·  maroon: outputs  ·  arrows between cells carry the activation forward</text>
+</svg>
