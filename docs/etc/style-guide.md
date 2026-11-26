@@ -4,11 +4,17 @@ orphan: true
 
 # Page Elements
 
+```{contents} Table of Contents
+:depth: 2
+```
+
 This page shows every element a content page can use, written the way it should appear in a real page. Open its source next to the rendered page and copy what you need. It is not linked from the sidebar.
+
+Like every content page on Spinning Up, it opens with a table of contents.
 
 ## Text
 
-Body text is set in the AUB–FAF type stack at 17px with a line height of 1.7. Use **bold** for a term at the point where it is defined, *italics* for emphasis, and `inline code` for anything a reader would type: a function such as `torch.nn.Linear`, a shape such as `(batch, features)`, or a file name.
+Body text is set in Lato at 16px with a 24px line height, the same as OpenAI's Spinning Up. Use **bold** for a term at the point where it is defined, *italics* for emphasis, and `inline code` for anything a reader would type: a function such as `torch.nn.Linear`, a shape such as `(batch, features)`, or a file name.
 
 Links to other pages are written with relative paths, like this one to [Part 1](../intro/dl_intro.md). External links look the same: [PyTorch documentation](https://pytorch.org/docs/).
 
@@ -54,14 +60,6 @@ $$
 $$
 
 Subtracting the same constant from every score leaves the output unchanged.
-```
-
-A key idea box holds a single result worth remembering.
-
-```{admonition} Key Idea
-:class: key-idea
-
-Stochastic gradient descent replaces the gradient over the whole dataset with an estimate from a small batch. The estimate is noisy but unbiased, and far cheaper.
 ```
 
 ```{note}

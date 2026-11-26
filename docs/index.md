@@ -1,18 +1,9 @@
-```{image} _static/img/banner.svg
-:alt: A small image of the digit seven feeds a neural network. One path of units lights up and the output peaks on a single class.
-:class: faf-banner
-```
-
-{.faf-eyebrow}
-American University of Beirut · MSFEA · Frontier AI Fellows
-
 # Welcome to Spinning Up in Deep Learning!
 
-{.faf-lede}
-A free course in deep learning from AUB Frontier AI Fellows, written for students who want to go from the core ideas to doing research with them.
-
-{.faf-actions}
-[Start with the introduction](user/introduction.md){.faf-button .faf-button-primary} [Read Part 1: Key Concepts](intro/dl_intro.md){.faf-button .faf-button-secondary}
+```{image} _static/img/banner.svg
+:alt: A small image of the digit seven feeds a neural network. One path of units lights up and the output peaks on a single class.
+:width: 100%
+```
 
 ```{toctree}
 :maxdepth: 2

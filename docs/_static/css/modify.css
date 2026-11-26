@@ -1,0 +1,195 @@
+:root {
+  --color--white: #fff;
+  --color--lightwash: #f7fbfb;
+  --color--mediumwash: #eff7f8;
+  --color--darkwash: #e6f3f3;
+  --color--warmgraylight: #eeedee;
+  --color--warmgraydark: #a3acb0;
+  --color--coolgray1: #c5c5d2;
+  --color--coolgray2: #8e8ea0;
+  --color--coolgray3: #6e6e80;
+  --color--coolgray4: #404452;
+  --color--black: #050505;
+  --color--mediumblue: #2e95d3;
+  --color--visited: #9b59b6;
+  --color--maroon: #840132;
+}
+
+body {
+  color: #000;
+  fill: #000;
+}
+
+h1,
+h2,
+.rst-content .toctree-wrapper p.caption,
+h3,
+h4,
+h5,
+h6,
+legend {
+  font-family: "Lato", "proxima-nova", "Helvetica Neue", Arial, sans-serif !important;
+}
+
+.wy-nav-top {
+  background-color: var(--color--coolgray4) !important;
+}
+
+.rst-content .toc-backref {
+  color: #404040 !important;
+}
+
+.footnote {
+  padding-left: 0.75rem;
+  background-color: var(--color--warmgraylight) !important;
+}
+
+.wy-nav-top a,
+.wy-nav-top a:visited {
+  color: var(--color--white) !important;
+}
+
+.wy-menu-vertical header,
+.wy-menu-vertical p.caption {
+  color: var(--color--coolgray1);
+  font-size: 80%;
+  font-weight: 500 !important;
+  letter-spacing: 1px;
+  margin-top: 1.25rem;
+}
+
+.wy-side-nav-search {
+  background-color: var(--color--warmgraylight) !important;
+}
+
+.wy-body-for-nav {
+  background-color: var(--color--coolgray1) !important;
+}
+
+.wy-menu-vertical li button.toctree-expand {
+  color: var(--color--coolgray2) !important;
+}
+
+.wy-nav-side {
+  color: var(--color--coolgray1) !important;
+  background-color: var(--color--coolgray4) !important;
+}
+
+.wy-side-nav-search input[type="text"] {
+  border-color: var(--color--warmgraydark) !important;
+}
+
+a {
+  color: var(--color--mediumblue) !important;
+}
+
+a:visited {
+  color: var(--color--visited) !important;
+}
+
+.wy-menu-vertical a {
+  color: var(--color--coolgray2) !important;
+}
+
+.wy-menu-vertical li.current a {
+  border-right: none !important;
+  color: var(--color--coolgray4) !important;
+}
+
+.wy-menu-vertical li.current {
+  background-color: var(--color--warmgraylight) !important;
+}
+
+.wy-menu-vertical li.toctree-l2.current > a {
+  background-color: var(--color--coolgray1) !important;
+}
+
+.wy-menu-vertical a:hover,
+.wy-menu-vertical li.current a:hover,
+.wy-menu-vertical li.toctree-l2.current > a:hover {
+  color: var(--color--warmgraylight) !important;
+  background-color: var(--color--coolgray3) !important;
+}
+
+.wy-alert-title,
+.rst-content .admonition-title {
+  background-color: var(--color--mediumblue) !important;
+}
+
+.wy-alert,
+.rst-content .note,
+.rst-content .attention,
+.rst-content .caution,
+.rst-content .danger,
+.rst-content .error,
+.rst-content .hint,
+.rst-content .important,
+.rst-content .tip,
+.rst-content .warning,
+.rst-content .seealso,
+.rst-content .admonition-todo,
+.rst-content .admonition {
+  background-color: var(--color--warmgraylight) !important;
+}
+
+.rst-content dl:not(.docutils):not(.simple) dt {
+  border-color: var(--color--mediumblue) !important;
+  background-color: var(--color--warmgraylight) !important;
+}
+
+.wy-table-odd td,
+.wy-table-striped tr:nth-child(2n-1) td,
+.rst-content table.docutils:not(.field-list) tr:nth-child(2n-1) td {
+  background-color: var(--color--warmgraylight) !important;
+}
+
+@media screen and (min-width: 1100px) {
+  .wy-nav-content-wrap {
+    background-color: var(--color--warmgraylight) !important;
+  }
+}
+
+.wy-side-nav-search img {
+  height: auto !important;
+  width: 100% !important;
+  padding: 0 !important;
+  background-color: inherit !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+}
+
+.wy-side-nav-search > a,
+.wy-side-nav-search .wy-dropdown > a {
+  margin-bottom: 0.809em !important;
+}
+
+.wy-menu-vertical li.toctree-l1.current > a {
+  border: none !important;
+}
+
+.wy-side-nav-search > div.version {
+  color: var(--color--coolgray2) !important;
+}
+
+.rst-content div.math {
+  position: relative;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.rst-content div.math > span.eqno {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.rst-content .toctree-wrapper ul li > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.rst-content .toctree-wrapper ul li > ul {
+  margin-bottom: 0;
+}

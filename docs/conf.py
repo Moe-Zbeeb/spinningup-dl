@@ -44,14 +44,12 @@ mathjax3_config = {
 
 html_theme = "sphinx_rtd_theme"
 html_theme_options = {
-    "collapse_navigation": True,
-    "navigation_depth": 3,
-    "prev_next_buttons_location": "bottom",
-    "style_external_links": False,
+    "logo_only": True,
 }
+html_logo = "_static/img/logo.png"
 html_title = project
 html_static_path = ["_static"]
-html_css_files = ["css/faf.css"]
+html_css_files = ["css/modify.css"]
 html_favicon = "_static/img/aub-faf-icon.png"
 html_baseurl = f"https://{github_user.lower()}.github.io/{github_repo}/"
 html_show_sourcelink = False

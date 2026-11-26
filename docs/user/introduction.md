@@ -1,5 +1,9 @@
 # Introduction
 
+```{contents} Table of Contents
+:depth: 2
+```
+
 ## What This Is
 
 Welcome to Spinning Up in Deep Learning! This is an educational resource produced by [AUB Frontier AI Fellows](https://aub-faf.com/) (AUB–FAF) at the American University of Beirut. It is meant to make it easier to learn deep learning properly: the ideas, the math behind them, and the code that makes them run.

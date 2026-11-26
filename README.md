@@ -41,9 +41,10 @@ docs/
   models/               Models Docs
   utils/                Utilities Docs
   etc/                  Acknowledgements, About, element reference
-  _static/css/faf.css   all styling
+  _static/css/modify.css  all styling, ported from Spinning Up
   _static/img/          images
-  _templates/           sidebar brand block and footer line
+  _templates/           breadcrumbs and footer line
+tools/                  sources for the logo image and the banner
 .github/workflows/      build and deploy to GitHub Pages
 .claude/skills/         the add-content guide
 ```
@@ -54,4 +55,4 @@ Every push to `main` runs `.github/workflows/deploy.yml`, which builds the site 
 
 ## Credits
 
-Named after and modelled on [Spinning Up in Deep RL](https://spinningup.openai.com/) by Joshua Achiam (OpenAI, MIT License). Visual identity from [aub-faf.com](https://aub-faf.com/).
+Named after and modelled on [Spinning Up in Deep RL](https://spinningup.openai.com/) by Joshua Achiam (OpenAI, MIT License). The stylesheet is a port of Spinning Up's; the name, logo, and banner are AUB Frontier AI Fellows.
