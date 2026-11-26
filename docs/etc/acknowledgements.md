@@ -2,7 +2,7 @@
 
 Spinning Up in Deep Learning takes its name, its structure, and its teaching approach from [Spinning Up in Deep RL](https://spinningup.openai.com/), written by Joshua Achiam at OpenAI and released under the MIT License. If you want to learn reinforcement learning, read the original.
 
-The topics of [Part 2](../intro/improving_networks.md) follow Amir Masoud Sefidian's [notes on Improving Deep Neural Networks](https://www.sefidian.com/wp-content/uploads/2023/02/Improving-Deep-Neural-Networks.pdf) (2022), a summary of the second course of Andrew Ng's Deep Learning Specialization. The explanations, figures, and code on this site are our own.
+The topics of [Part 2](../intro/improving_networks.md) and [Part 3](../intro/structuring_projects.md) follow Amir Masoud Sefidian's notes on [Improving Deep Neural Networks](https://www.sefidian.com/wp-content/uploads/2023/02/Improving-Deep-Neural-Networks.pdf) (2022) and [Structuring Machine Learning Projects](https://www.sefidian.com/wp-content/uploads/2023/03/Structuring-Machine-Learning-Projects.pdf) (2023), summaries of the second and third courses of Andrew Ng's Deep Learning Specialization. The explanations, figures, and code on this site are our own.
 
 The site is built with [Sphinx](https://www.sphinx-doc.org/), the [Read the Docs theme](https://sphinx-rtd-theme.readthedocs.io/), and [MyST](https://myst-parser.readthedocs.io/). Its design follows the original Spinning Up site, with the name and logo of [AUB Frontier AI Fellows](https://aub-faf.com/).
 
