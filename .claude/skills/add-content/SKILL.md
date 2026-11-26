@@ -9,6 +9,8 @@ description: Use when adding, writing, editing, renaming, moving, or removing a 
 
 The site is a Sphinx project in `docs/`, written in MyST Markdown, themed with `sphinx_rtd_theme` and one stylesheet, `modify.css`, ported from OpenAI's Spinning Up so the fonts, link colors, and layout match that site. Only the name, logo, and banner are AUB Frontier AI Fellows (AUB–FAF). A page is one `.md` file. A page appears in the sidebar only when a `toctree` in `docs/index.md` lists it.
 
+`AGENTS.md` at the repository root holds the house style and the workflow for typesetting notes; read it first. This skill holds the mechanics. `templates/` holds the shape of a part, a section, a model page, and a placeholder.
+
 `docs/etc/style-guide.md` is the live reference for every element (math, callouts, code, tables, figures, footnotes). Read its source before writing a page and copy from it. It renders at `/etc/style-guide.html`.
 
 ## Where Things Live
@@ -18,6 +20,8 @@ The site is a Sphinx project in `docs/`, written in MyST Markdown, themed with `
 | Landing page and sidebar order | `docs/index.md` |
 | Pages | One folder per sidebar section: `docs/user/`, `docs/intro/`, `docs/resources/`, `docs/models/`, `docs/utils/`, `docs/etc/`. New sections get a new folder |
 | Element reference page | `docs/etc/style-guide.md` |
+| Page and section templates | `templates/part.md`, `templates/section.md`, `templates/model.md`, `templates/placeholder.md` |
+| Template checker, run by `make check` | `tools/lint_content.py` |
 | Images | `docs/_static/img/<page-name>/` |
 | All styling | `docs/_static/css/modify.css` |
 | Sidebar logo image | `docs/_static/img/logo.png`, rendered from `tools/logo.html` |
@@ -34,7 +38,7 @@ Every unwritten page outside `docs/intro/` holds a single `Coming soon` box. Ope
 
 ### Fill in one section of an Introduction to Deep Learning part
 
-The five parts in `docs/intro/` are outline pages: a `Coming soon` box at the top, then one `##` heading per topic with `*Coming soon.*` under it. To write a topic, replace the `*Coming soon.*` line under its heading with the content, using `###` for subsections. Leave the other headings as they are. When the last topic of a part is written, delete the `Coming soon` box at the top. To add, rename, or reorder topics, edit the `##` headings: the sidebar, the landing page, and the page's table of contents all follow them.
+The five parts in `docs/intro/` are outline pages: a `Coming soon` box at the top, then one `##` heading per topic with `*Coming soon.*` under it. To write a topic, replace the `*Coming soon.*` line under its heading with the content, in the shape of `templates/section.md`, using `###` for subsections. Leave the other headings as they are. When the first topic of a part is written, whichever heading it is, add the part's opening paragraph under the `Coming soon` box, as in `templates/part.md`. When the last topic is written, delete the `Coming soon` box at the top and add a `## Recap` section at the end; the checker requires both. To add, rename, or reorder topics, edit the `##` headings: the sidebar, the landing page, and the page's table of contents all follow them.
 
 | Part | File |
 | --- | --- |
@@ -138,7 +142,7 @@ A Models Docs page follows the Spinning Up algorithm-page outline:
 
 Links to other pages are relative paths ending in `.md`: `[Part 1](../intro/neural_networks.md)`. Link to a section with `[text](../intro/neural_networks.md#section-heading-in-lowercase-with-hyphens)`.
 
-Math uses `$...$` inline and `$$...$$` for display. Multi-line math uses `aligned` inside the dollar signs. To number an equation, put a label in parentheses on the same line as the closing `$$`. Refer to it in the text with the `eq` role. Labels are shared across the whole site, so start each one with the page name (`eq-mlp-forward`, not `eq-forward`).
+Math uses `$...$` inline and `$$...$$` for display. Multi-line math uses `aligned` inside the dollar signs. To number an equation, put a label in parentheses on the same line as the closing `$$`. Refer to it in the text with the `eq` role. Labels are shared across the whole site, so each one is `eq-`, then the page's file name with underscores written as hyphens, then a short name: `eq-mlp-forward` in `mlp.md`, `eq-improving-networks-adam` in `improving_networks.md`. The checker enforces the prefix. A function defined piece by piece uses `\begin{cases}`.
 
 ```markdown
 $$
@@ -151,9 +155,9 @@ $$ (eq-mlp-layer)
 The second line of {eq}`eq-mlp-layer` is the ReLU.
 ```
 
-Site-wide macros are `\R`, `\E`, `\L`, `\argmax`, `\argmin`. Add more under `mathjax3_config` in `docs/conf.py` when a symbol is used on more than one page.
+Site-wide macros are `\R`, `\E`, `\L`, `\argmax`, `\argmin`. Add more under `mathjax4_config` in `docs/conf.py` when a symbol is used on more than one page.
 
-Callout boxes are admonitions. The box title is free text. "You Should Know" is the default box, used for the point a reader must not miss.
+Callout boxes are admonitions. The box title is free text. "You Should Know" is the default box, used for a convention the reader will meet elsewhere, a caveat, a common mistake, or a pointer to further reading.
 
 ````markdown
 ```{admonition} You Should Know
@@ -163,7 +167,7 @@ The body of the box. It can hold paragraphs, math, lists, and code.
 
 | Box | Syntax | Use for |
 | --- | --- | --- |
-| You Should Know | `{admonition} You Should Know` | Definitions and points needed later |
+| You Should Know | `{admonition} You Should Know` | Conventions, caveats, common mistakes, pointers to further reading |
 | Note | `{note}` | Asides |
 | Tip | `{tip}` | Practical advice |
 | Warning | `{warning}` | Mistakes that cost time |
@@ -186,7 +190,7 @@ A footnote backs a specific claim in the text: `[^adam]` at the claim and `[^ada
 
 ## Voice
 
-Write the way Spinning Up does: direct, second person, short paragraphs, one idea per paragraph. Define a term in bold at the point it is first used. State the claim, then the equation, then what each symbol means. Prefer a small concrete example over a general statement. Headings are labels, not sentences.
+The house style is in `AGENTS.md` under House Style: "we" speaking to "you", short paragraphs with one idea each, a term in bold where it is defined, a sentence leading into each equation and another explaining its symbols, a small concrete example before the general rule. Headings are labels, not sentences.
 
 ## Design Reference
 
@@ -221,11 +225,11 @@ make serve
 make check
 ```
 
-`make setup` is needed once per machine. `make serve` opens a live preview at `http://localhost:8000` that reloads on save. `make check` is the gate: it builds with warnings as errors, exactly as the deploy workflow does, and writes the HTML to `docs/_build/html/`.
+`make setup` is needed once per machine. `make serve` opens a live preview at `http://localhost:8000` that reloads on save. `make check` is the gate: it runs the template checker, then builds with warnings as errors, exactly as the deploy workflow does, and writes the HTML to `docs/_build/html/`. `make lint` runs the checker alone. Its messages name the file, the line, and the rule that was broken.
 
-A page is done when `make check` passes and the rendered page has been looked at, in the preview or by opening its file under `docs/_build/html/`. The build cannot see an empty heading, a broken equation, or a figure at the wrong size; only looking can.
+A page is done when `make check` passes and the rendered page has been looked at. Math is drawn by MathJax in the browser, so reading the HTML file proves nothing: use the live preview, or run `make shot PAGE=intro/neural_networks`, which saves a screenshot of the built page to `docs/_build/shots/` and prints its path (add `HEIGHT=6000` for a long page). The build cannot see an empty heading, a broken equation, or a figure at the wrong size; only looking can.
 
-Publishing is a commit and a push to `main`. The GitHub Actions workflow rebuilds and deploys the site. Commit and push only when the user asks.
+Publishing is a commit and a push to `main`. The GitHub Actions workflow rebuilds and deploys the site. Commit and push when the user asks to publish, or has said to publish each section as it is finished.
 
 ## Common Mistakes
 

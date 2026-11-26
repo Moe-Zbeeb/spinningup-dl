@@ -30,7 +30,7 @@ myst_enable_extensions = [
 ]
 myst_heading_anchors = 3
 
-mathjax3_config = {
+mathjax4_config = {
     "tex": {
         "macros": {
             "R": r"\mathbb{R}",

@@ -18,7 +18,9 @@ make serve
 | `make setup` | Create the virtual environment and install dependencies |
 | `make serve` | Live preview with auto-reload |
 | `make html` | Build once into `docs/_build/html` |
-| `make check` | Build with warnings as errors, as the deploy does |
+| `make lint` | Check that every page follows the template |
+| `make check` | Run the template check, then build with warnings as errors, as the deploy does |
+| `make shot PAGE=intro/neural_networks` | Save a screenshot of a built page to `docs/_build/shots/` |
 | `make clean` | Delete the build output |
 
 ## Add content
@@ -27,7 +29,10 @@ Each page is one Markdown file. Most pages currently hold a "Coming soon" box: o
 
 - `docs/index.md` controls the landing page and the sidebar order.
 - `docs/etc/style-guide.md` shows every element a page can use (math, callout boxes, code, tables, figures, footnotes). Copy from it.
-- `.claude/skills/add-content/SKILL.md` is the full guide: how to add, rename, and remove pages, the writing conventions, and the fonts and colors. Claude Code loads it automatically when asked to add content in this repository.
+- `templates/` holds the shape every page and section follows: `part.md`, `section.md`, `model.md`, and `placeholder.md`.
+- `AGENTS.md` is the brief for AI coding agents (Claude Code, Codex, Cursor and others): how to turn notes into a section, and the house style that keeps the site reading like Spinning Up. `CLAUDE.md` points Claude Code at it.
+- `.claude/skills/add-content/SKILL.md` has the mechanics: how to add, rename, and remove pages, the syntax of each element, and the fonts and colors.
+- `tools/lint_content.py` enforces the template. It runs in `make check` and in the deploy, so an off-template page cannot be published.
 
 ## Layout
 
@@ -44,7 +49,9 @@ docs/
   _static/css/modify.css  all styling, ported from Spinning Up
   _static/img/          images
   _templates/           breadcrumbs and footer line
-tools/                  sources for the logo image and the banner
+templates/              page and section templates
+tools/                  template checker, and sources for the logo and banner
+AGENTS.md               instructions for AI coding agents
 .github/workflows/      build and deploy to GitHub Pages
 .claude/skills/         the add-content guide
 ```

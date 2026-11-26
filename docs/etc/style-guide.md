@@ -35,9 +35,9 @@ Display math goes between double dollar signs. Add a label when you want to refe
 
 $$
 \L(\theta) = - \frac{1}{N} \sum_{i=1}^{N} \log p_\theta(y_i \mid x_i)
-$$ (eq-nll)
+$$ (eq-style-guide-nll)
 
-Equation {eq}`eq-nll` is the negative log-likelihood. Multi-line derivations use `aligned` inside the double dollar signs:
+Equation {eq}`eq-style-guide-nll` is the negative log-likelihood. A label is `eq-`, then this page's file name with hyphens, then a short name. Multi-line derivations use `aligned` inside the double dollar signs:
 
 $$
 \begin{aligned}
@@ -46,11 +46,17 @@ $$
 \end{aligned}
 $$
 
+A function defined piece by piece uses `cases`:
+
+$$
+g'(z) = \begin{cases} 0 & \text{if } z < 0, \\ 1 & \text{if } z \geq 0. \end{cases}
+$$
+
 The macros `\R`, `\E`, `\L`, `\argmax`, and `\argmin` are defined for the whole site.
 
 ## Callout Boxes
 
-The default box is "You Should Know". Use it for the point a reader must not miss.
+The default box is "You Should Know". Use it for a convention the reader will meet elsewhere, a caveat, a common mistake, or a pointer to further reading.
 
 ```{admonition} You Should Know
 The softmax function turns a vector of scores into a probability distribution:
