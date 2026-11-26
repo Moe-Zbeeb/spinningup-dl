@@ -97,6 +97,14 @@ The notes use plain-text shorthand. Typeset it as follows, on every page.
 | In the notes | Typeset as | Meaning |
 | --- | --- | --- |
 | `W[l]`, `b[l]`, `z[l]`, `a[l]` | $W^{[l]}$, $b^{[l]}$, $z^{[l]}$, $a^{[l]}$ | A quantity of layer $l$ |
+| `a_j[l]` | $a_j^{[l]}$ | Unit $j$ of layer $l$ |
+| `Z[l]`, `A[l]`, `X` | $Z^{[l]}$, $A^{[l]}$, $X$ | The vectorized form, one column per training example; $A^{[0]} = X$ |
+| `g[l]`, `g[l]'` | $g^{[l]}$, $g^{[l]\prime}$ | The activation function of layer $l$ and its derivative |
+| `dZ[l]`, `dA[l]` | $dZ^{[l]}$, $dA^{[l]}$ | The gradient of the cost with respect to $Z^{[l]}$, $A^{[l]}$ |
+| `A * B` | $A \ast B$ | Element-wise multiplication |
+| `(A)^T` | $\left(A\right)^{\top}$ | Transpose |
+| `np.sum(...)` inside a formula | $\texttt{np.sum}(\dots)$ | NumPy code kept as code inside the math |
+| `alpha` | $\alpha$ | The learning rate |
 | `x(i)`, `y(i)` | $x^{(i)}$, $y^{(i)}$ | Training example $i$ |
 | `x<t>`, `a<t>` | $x^{\langle t \rangle}$, $a^{\langle t \rangle}$ | Time step $t$ of a sequence |
 | `X{t}`, `Y{t}` | $X^{\{t\}}$, $Y^{\{t\}}$ | Mini-batch $t$ |
