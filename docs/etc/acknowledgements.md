@@ -12,7 +12,9 @@ The idea for this site comes from [Spinning Up in Deep RL](https://spinningup.op
 
 The course follows the topics of the [Deep Learning Specialization](https://www.deeplearning.ai/courses/deep-learning-specialization/) by Andrew Ng, offered by DeepLearning.AI on Coursera, whose five courses map onto the five parts of our [Introduction to Deep Learning](../intro/neural_networks.md).
 
-## Course Notes by Amir Masoud Sefidian
+## Public Notes
+
+This course is inspired by public notes from [Amir Masoud Sefidian](https://www.sefidian.com/), [Nathan Lambert](https://www.natolambert.com/), and [Andrej Karpathy](https://karpathy.ai/).
 
 Parts [2](../intro/improving_networks.md), [3](../intro/structuring_projects.md), [4](../intro/convnets.md), and [5](../intro/sequence_models.md) follow the outlines of Amir Masoud Sefidian's notes on the specialization:
 
@@ -22,10 +24,6 @@ Parts [2](../intro/improving_networks.md), [3](../intro/structuring_projects.md)
 - and [Sequence Models](https://www.sefidian.com/wp-content/uploads/2023/02/Sequence-Models.pdf), 2023.
 
 The explanations, examples, figures, and code on this site are our own.
-
-## Nathan Lambert
-
-We also thank [Nathan Lambert](https://www.natolambert.com/).
 
 ## Tools
 
