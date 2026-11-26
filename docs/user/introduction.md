@@ -10,7 +10,7 @@ Welcome to Spinning Up in Deep Learning! This is an educational resource produce
 
 The resource is organised the way OpenAI's [Spinning Up in Deep RL](https://spinningup.openai.com/) is, because that structure works. When complete it will contain:
 
-- a short [introduction](../intro/dl_intro.md) to the terminology, the kinds of neural networks, and how they are trained,
+- a five-part [introduction](../intro/neural_networks.md) that goes from logistic regression to convolutional and sequence models,
 - an [essay](../resources/researcher.md) about growing into a deep learning research role,
 - a [curated list](../resources/keypapers.md) of important papers organised by topic,
 - well-documented, standalone implementations of [key models](models.md),
@@ -24,7 +24,7 @@ There are excellent textbooks, courses, and papers on deep learning. What is har
 
 ## How to Use This Resource
 
-If you are new to deep learning, read the three parts of the Introduction to Deep Learning in order, then pick a model from the Models Docs and work through its page with the code open beside it.
+If you are new to deep learning, read the five parts of the Introduction to Deep Learning in order, then pick a model from the Models Docs and work through its page with the code open beside it.
 
 If you already train networks and want to move toward research, start with the essay for researchers and the key papers list, and use the model pages as references.
 

@@ -21,9 +21,11 @@ user/plotting
 :maxdepth: 2
 :caption: Introduction to Deep Learning
 
-intro/dl_intro
-intro/dl_intro2
-intro/dl_intro3
+intro/neural_networks
+intro/improving_networks
+intro/structuring_projects
+intro/convnets
+intro/sequence_models
 ```
 
 ```{toctree}

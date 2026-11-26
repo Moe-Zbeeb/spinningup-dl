@@ -30,7 +30,19 @@ The site is a Sphinx project in `docs/`, written in MyST Markdown, themed with `
 
 ### Fill in a placeholder page
 
-Every unwritten page holds a single `Coming soon` box. Open the file, delete the whole ` ```{admonition} Coming soon ` block, keep the `# Title` line, and write the page below it. Nothing else needs to change: the sidebar and landing page read the title and the `##` headings from the file.
+Every unwritten page outside `docs/intro/` holds a single `Coming soon` box. Open the file, delete the whole ` ```{admonition} Coming soon ` block, keep the `# Title` line, and write the page below it. Nothing else needs to change: the sidebar and landing page read the title and the `##` headings from the file.
+
+### Fill in one section of an Introduction to Deep Learning part
+
+The five parts in `docs/intro/` are outline pages: a `Coming soon` box at the top, then one `##` heading per topic with `*Coming soon.*` under it. To write a topic, replace the `*Coming soon.*` line under its heading with the content, using `###` for subsections. Leave the other headings as they are. When the last topic of a part is written, delete the `Coming soon` box at the top. To add, rename, or reorder topics, edit the `##` headings: the sidebar, the landing page, and the page's table of contents all follow them.
+
+| Part | File |
+| --- | --- |
+| Part 1: Neural Networks and Deep Learning | `docs/intro/neural_networks.md` |
+| Part 2: Improving Deep Neural Networks | `docs/intro/improving_networks.md` |
+| Part 3: Structuring Machine Learning Projects | `docs/intro/structuring_projects.md` |
+| Part 4: Convolutional Neural Networks | `docs/intro/convnets.md` |
+| Part 5: Sequence Models | `docs/intro/sequence_models.md` |
 
 ### Add a new page to an existing section
 
@@ -124,7 +136,7 @@ A Models Docs page follows the Spinning Up algorithm-page outline:
 
 ## Elements
 
-Links to other pages are relative paths ending in `.md`: `[Part 1](../intro/dl_intro.md)`. Link to a section with `[text](../intro/dl_intro.md#section-heading-in-lowercase-with-hyphens)`.
+Links to other pages are relative paths ending in `.md`: `[Part 1](../intro/neural_networks.md)`. Link to a section with `[text](../intro/neural_networks.md#section-heading-in-lowercase-with-hyphens)`.
 
 Math uses `$...$` inline and `$$...$$` for display. Multi-line math uses `aligned` inside the dollar signs. To number an equation, put a label in parentheses on the same line as the closing `$$`. Refer to it in the text with the `eq` role. Labels are shared across the whole site, so start each one with the page name (`eq-mlp-forward`, not `eq-forward`).
 

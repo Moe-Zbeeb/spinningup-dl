@@ -16,7 +16,7 @@ Like every content page on Spinning Up, it opens with a table of contents.
 
 Body text is set in Lato at 16px with a 24px line height, the same as OpenAI's Spinning Up. Use **bold** for a term at the point where it is defined, *italics* for emphasis, and `inline code` for anything a reader would type: a function such as `torch.nn.Linear`, a shape such as `(batch, features)`, or a file name.
 
-Links to other pages are written with relative paths, like this one to [Part 1](../intro/dl_intro.md). External links look the same: [PyTorch documentation](https://pytorch.org/docs/).
+Links to other pages are written with relative paths, like this one to [Part 1](../intro/neural_networks.md). External links look the same: [PyTorch documentation](https://pytorch.org/docs/).
 
 - Bulleted lists are for parallel items with no order.
 - Keep each item to a sentence or two.
