@@ -124,4 +124,94 @@ Activation functions. The perceptron step and the ELU are shown for comparison. 
 
 ## Random Initialization
 
-*Coming soon.*
+Before the first step of gradient descent, every weight and bias needs a starting value. Zero looks like the natural choice. This section explains why zero fails for the weights, why it is fine for the biases, and why the weights should start small.
+
+### The Symmetry Problem
+
+Two units are **symmetric** if they do exactly the same computation. A symmetric unit is wasted: whatever it computes, its twin computes too.
+
+To see how symmetry arises, take a hidden layer whose units all start with the same weights and the same bias, for example all zeros, and follow one step of training.
+
+1. **Forward.** Unit $j$ computes $z_j = w_j x + b_j$, where $w_j$ is row $j$ of $W^{[l]}$. If every row $w_j$ and every bias $b_j$ is the same, every unit gets the same $z_j$ on every example, and so the same activation $a_j$.
+2. **Backward.** The units feed the next layer through the same weights, so the cost cannot tell them apart, and [backward propagation](#backward-propagation) hands each of them the same gradient. The rows of $dW^{[l]}$ are identical, and so are the entries of $db^{[l]}$.
+3. **Update.** Identical parameters minus identical steps are still identical.
+
+After the update the units are exactly where they started: symmetric. The same three steps repeat on the next iteration, and the one after, so the units stay symmetric throughout all backprop iterations, however long you train. A hidden layer of 100 symmetric units computes nothing that a single unit could not.
+
+Think of the hidden units as a team of people asked to describe photographs. If everyone starts with the same instructions and gets the same feedback after every attempt, nobody ever specializes: you get one opinion, repeated. To get a team where one person watches for edges, another for colors, and another for textures, the members have to start out different.
+
+**Example: Watching Symmetry in PyTorch.** Here, a hidden layer of four units starts with every parameter equal to 0.5. After one backward pass, the gradient of its weights has four identical rows:
+
+```python
+import torch
+import torch.nn as nn
+
+torch.manual_seed(0)
+x, y = torch.randn(64, 3), torch.randn(64, 1)
+
+model = nn.Sequential(nn.Linear(3, 4), nn.Tanh(), nn.Linear(4, 1))
+for p in model.parameters():
+    nn.init.constant_(p, 0.5)
+
+loss = nn.functional.mse_loss(model(x), y)
+loss.backward()
+print(model[0].weight.grad)
+```
+
+```text
+tensor([[0.1355, 0.0580, 0.2716],
+        [0.1355, 0.0580, 0.2716],
+        [0.1355, 0.0580, 0.2716],
+        [0.1355, 0.0580, 0.2716]])
+```
+
+Every unit is about to take exactly the same step.
+
+### Breaking the Symmetry
+
+We avoid symmetry by using **random initialization** rather than zero initialization. When each row of $W^{[l]}$ starts at different random values, each unit computes a slightly different $z_j$, receives a slightly different gradient, and takes a slightly different step. Gradient descent then pushes the units further apart, each toward whatever feature helps the cost most from where it started. This is called **breaking the symmetry**.
+
+```{figure} ../_static/img/neural_networks/symmetry_breaking.svg
+:alt: Two plots of the first weight of each of four hidden units over 2000 training steps. On the left, where every weight starts at 0.5, the four curves lie exactly on top of each other and the final loss is 0.55. On the right, where the weights start small and random, the curves separate after about 150 steps, one going up to 3 and three going down to between minus 2.6 and minus 3.4, and the final loss is 0.06.
+:width: 100%
+
+A network with four tanh hidden units, trained by gradient descent to tell whether the two coordinates of a point have the same sign. With every weight at 0.5 (left), the four units follow one curve for all 2000 steps, so the network acts as if it had a single unit and cannot solve the problem. With small random weights (right), the units separate and the loss falls to 0.06.
+```
+
+The figure shows both halves of the story. On the left, the units never separate, no matter how long training runs. On the right, the differences between the units are too small to see at first, but they grow until each unit has a role of its own.
+
+**Example: Random Initialization in PyTorch.** To initialize a layer the way described here, draw the weights from a standard normal distribution scaled by 0.01, and set the biases to zero:
+
+```python
+import torch.nn as nn
+
+layer = nn.Linear(3, 4)
+nn.init.normal_(layer.weight, mean=0.0, std=0.01)
+nn.init.zeros_(layer.bias)
+print(layer.weight)
+```
+
+A normal distribution with standard deviation 0.01 is the same as `0.01 * torch.randn(...)`.
+
+### Why the Bias Can Start at Zero
+
+The bias $b$ does not need random initialization like the weights $W$. Symmetry needs units that are identical in every way. Once the rows of $W^{[l]}$ differ, the units already compute different $z_j$, even when every $b_j$ is zero. Their gradients differ, including their entries of $db^{[l]}$, so the biases drift apart on their own during training. Starting every bias at zero is the usual choice.
+
+### Why the Weights Should Be Small
+
+$W$ should be initialized to small random values, for example standard normal values multiplied by 0.01. Small weights allow faster convergence of gradient descent when the activation functions are sigmoid or tanh.
+
+The reason is the shape of those functions. As the [Activation Functions](#activation-functions) section showed, sigmoid and tanh flatten out when $z$ is far from 0, and their derivatives there are close to 0. A unit whose $z$ lands in a flat region is **saturated**: gradient descent changes its weights very slowly, because every gradient that passes through it is multiplied by $g'(z) \approx 0$. The table shows how quickly the derivatives fall:
+
+| $z$ | $\tanh'(z)$ | $\sigma'(z)$ |
+| ---: | ---: | ---: |
+| 0 | 1.0 | 0.25 |
+| 0.32 | 0.91 | 0.24 |
+| 3 | 0.0099 | 0.045 |
+| 5 | 0.00018 | 0.0067 |
+
+Large weights push $z$ into the flat region. Suppose a unit has 1000 inputs, each of size about 1, and its weights are drawn from a standard normal distribution. Then $z = w_1 x_1 + \dots + w_{1000} x_{1000}$ is a sum of 1000 random terms, and its typical size is $\sqrt{1000} \approx 32$, since the variances of independent terms add up. About 92% of such units start with $|z| > 3$, where $\tanh'$ is below 0.01. Multiply the weights by 0.01 and the typical size of $z$ drops to about 0.32, on the steep part of the curve, where $\tanh'(z) \approx 0.91$ and learning is fast.
+
+```{admonition} You Should Know
+The factor 0.01 is a rule of thumb that works well for networks with one or two hidden layers. In a deep network, weights that are too small shrink the signal a little more at every layer, which slows learning in a different way. The flat start of the right panel in the figure above is a mild version of this. Part 2 shows how to choose the scale of the weights from the number of inputs to each layer.
+```
