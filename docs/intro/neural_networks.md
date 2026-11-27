@@ -82,6 +82,39 @@ where $\alpha$ is the learning rate. The derivative says which way the cost incr
 
 ### Computing the Gradients
 
+```{sidebar} (Optional) Deriving the Cross-Entropy Gradient
+Here we derive the three steps of this section in full, with $a = \sigma(z) = \frac{1}{1 + e^{-z}}$, the loss $\L = -\left(y \log a + (1 - y) \log(1 - a)\right)$, and $\log$ the natural logarithm.
+
+**Step 1: The Loss.** Since the derivative of $\log a$ is $\frac{1}{a}$ and that of $\log(1 - a)$ is $-\frac{1}{1 - a}$,
+
+$$
+\frac{\partial \L}{\partial a} = -\frac{y}{a} + \frac{1 - y}{1 - a}.
+$$
+
+**Step 2: The Sigmoid.** Differentiating $(1 + e^{-z})^{-1}$,
+
+$$
+\begin{aligned}
+\frac{\partial a}{\partial z} &= \frac{e^{-z}}{(1 + e^{-z})^2} \\
+&= \frac{1}{1 + e^{-z}} \cdot \frac{e^{-z}}{1 + e^{-z}} \\
+&= a(1 - a),
+\end{aligned}
+$$
+
+since $\frac{e^{-z}}{1 + e^{-z}} = 1 - \frac{1}{1 + e^{-z}} = 1 - a$.
+
+**Step 3: The Chain Rule.** Multiplying the two, the denominators cancel:
+
+$$
+\begin{aligned}
+\frac{\partial \L}{\partial z} &= \frac{\partial \L}{\partial a} \cdot \frac{\partial a}{\partial z} \\
+&= \left(-\frac{y}{a} + \frac{1 - y}{1 - a}\right) a(1 - a) \\
+&= -y(1 - a) + (1 - y)\,a \\
+&= a - y.
+\end{aligned}
+$$
+```
+
 The gradients come from the **chain rule**, working backward through the computation $z = w^{\top} x + b$, then $a = \sigma(z)$, then $\L(a, y)$. For one example:
 
 1. The derivative of the loss with respect to $a$ is $\frac{\partial \L}{\partial a} = -\frac{y}{a} + \frac{1 - y}{1 - a}$.

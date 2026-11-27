@@ -198,6 +198,19 @@ a:visited {
   background-color: var(--color--warmgraylight) !important;
 }
 
+.rst-content .sidebar {
+  background-color: var(--color--warmgraylight);
+  border: none;
+  padding: 12px;
+}
+
+.rst-content .sidebar .sidebar-title {
+  font-family: "Lato", "proxima-nova", "Helvetica Neue", Arial, sans-serif;
+  color: #fff;
+  background-color: var(--color--mediumblue);
+  margin: -12px -12px 12px;
+}
+
 .rst-content dl:not(.docutils):not(.simple) dt {
   border-color: var(--color--mediumblue) !important;
   background-color: var(--color--warmgraylight) !important;

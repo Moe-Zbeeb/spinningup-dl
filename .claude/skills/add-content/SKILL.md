@@ -171,6 +171,7 @@ The body of the box. It can hold paragraphs, math, lists, and code.
 | Note | `{note}` | Asides |
 | Tip | `{tip}` | Practical advice |
 | Warning | `{warning}` | Mistakes that cost time |
+| Optional sidebar | `{sidebar} (Optional) Title` | A derivation the reader can skip, floated to the right of the text; place it at the top of its section |
 | Coming soon | `{admonition} Coming soon` | Unwritten pages and sections |
 
 Code blocks always name a language (`python`, `bash`, `text` for pseudocode). Code examples use PyTorch and must run as written. The site build does not execute code and the build environment has no PyTorch, so run each example in an environment that has `torch` before publishing it. If that is not possible, tell the user the example is unverified.

@@ -68,6 +68,18 @@ $$
 Subtracting the same constant from every score leaves the output unchanged.
 ```
 
+An optional derivation that the main text can skip goes in a sidebar, which floats to the right of the text. Place it at the top of its section and start its title with "(Optional)".
+
+```{sidebar} (Optional) Deriving the Softmax Shift
+Subtracting $c$ from every score multiplies the numerator and the denominator by the same factor $e^{-c}$:
+
+$$
+\frac{e^{z_k - c}}{\sum_j e^{z_j - c}} = \frac{e^{z_k}}{\sum_j e^{z_j}}.
+$$
+```
+
+The text beside the sidebar flows around it. On a narrow screen, the sidebar takes the full width and sits above the text instead.
+
 ```{note}
 Notes are asides: useful, but the page reads fine without them.
 ```

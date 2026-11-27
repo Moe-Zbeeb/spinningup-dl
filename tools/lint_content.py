@@ -6,7 +6,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 DEFAULT_TARGETS = [ROOT / "docs", ROOT / "templates"]
 SKIP_DIRS = {"_build", "_static", "_templates"}
 
-MARKDOWN_DIRECTIVES = {"admonition", "note", "tip", "warning"}
+MARKDOWN_DIRECTIVES = {"admonition", "note", "tip", "warning", "sidebar"}
 OPAQUE_DIRECTIVES = {"contents", "toctree", "figure", "image", "math", "code-block", "list-table", "table"}
 IMAGE_DIRECTIVES = {"figure", "image"}
 PLACEHOLDER = "*Coming soon.*"
