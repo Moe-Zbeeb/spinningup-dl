@@ -90,6 +90,13 @@ The gradients come from the **chain rule**, working backward through the computa
 
 That last result is worth remembering: the gradient at $z$ is simply the prediction minus the label. From it, since $z = w^{\top} x + b$, we get $dw = x \, dz$ and $db = dz$. This backward pass through the computation is a small instance of the [backward propagation](#backward-propagation) used for whole networks.
 
+```{figure} ../_static/img/neural_networks/computation_graph.svg
+:alt: Inputs w, x, and b feed z equals w transpose x plus b, which feeds a equals sigma of z, which feeds the loss L of a and y. Solid blue arrows run forward from left to right. Dashed maroon arrows run backward from the loss, labeled with the derivative of the loss with respect to a, the derivative of a with respect to z, dz equals a minus y, dw equals x dz, and db equals dz.
+:width: 100%
+
+The computation graph of logistic regression for one example. The forward pass, solid and blue, computes $z$, then $a$, then the loss. The backward pass, dashed and red, applies the chain rule from the loss back to the parameters.
+```
+
 ### Vectorization
 
 Computing these quantities one example at a time, in a `for` loop over all $m$ examples, is slow. **Vectorization** processes all the examples at once with matrix operations, which libraries such as NumPy and PyTorch run in fast, parallel code. With the examples as the columns of $X$, one iteration of gradient descent is
