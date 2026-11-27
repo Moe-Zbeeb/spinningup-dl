@@ -23,7 +23,7 @@ There are excellent textbooks, courses, and papers on deep learning. What is har
 
 ## How to Use This Resource
 
-If you are new to deep learning, read the five parts of the Introduction to Deep Learning in order, then pick a model from the Models Docs and work through its page with the code open beside it.
+Start with the [Information Theory and Optimization Background](../background/information_theory.md), which introduces the ideas behind the cost functions used throughout the course. Then, if you are new to deep learning, read the five parts of the Introduction to Deep Learning in order, then pick a model from the Models Docs and work through its page with the code open beside it.
 
 If you already train networks and want to move toward research, start with the essay for researchers and the key papers list, and use the model pages as references.
 

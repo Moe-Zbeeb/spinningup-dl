@@ -36,7 +36,7 @@ make shot PAGE=intro/neural_networks
 
 The maintainer adds the course one piece at a time by handing over notes for a topic: pasted text, a PDF, photos, or LaTeX. Turn those notes into a section of the site that follows the template.
 
-1. **Find where it goes.** The five parts of the course are the files in `docs/intro/`. Each topic is a `##` heading with `*Coming soon.*` under it. Match the notes to a heading. If no heading matches, ask the maintainer where the topic belongs before adding one.
+1. **Find where it goes.** The five parts of the course are the files in `docs/intro/`, and the background page that students read first is `docs/background/information_theory.md`. Each topic is a `##` heading with `*Coming soon.*` under it. Match the notes to a heading. If no heading matches, ask the maintainer where the topic belongs before adding one.
 2. **Read the template.** `templates/section.md` is a complete example of one topic. `docs/etc/style-guide.md` shows the syntax of every element.
 3. **Write the section.** Replace the `*Coming soon.*` line under the heading with the content. Leave the heading text and the other sections as they are.
 4. **Stay faithful to the notes.** Every definition, equation, example, and claim in the notes appears in the section, in the order the notes give them. A point the notes make twice appears once, where it fits best. Rewrite fragments into full sentences, fix typos, and group related points under `###` subsections.

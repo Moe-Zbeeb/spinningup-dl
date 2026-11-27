@@ -19,6 +19,13 @@ user/plotting
 
 ```{toctree}
 :maxdepth: 2
+:caption: Background
+
+background/information_theory
+```
+
+```{toctree}
+:maxdepth: 2
 :caption: Introduction to Deep Learning
 
 intro/neural_networks
