@@ -8,7 +8,7 @@ It is also inspired by public notes from Amir Masoud Sefidian, Nathan Lambert, a
 
 The site is built with Sphinx, the Read the Docs theme, and MyST. Its figures are drawn with Matplotlib, and its code uses PyTorch.
 
-## Authors
+**Authors**
 
 ```{image} ../_static/img/authors/authors.png
 :alt: Circular portrait photos with names and roles. From left to right, Ammar Mohanna, AUB–FAF Manager; Mohamad Zbeeb, Main Author; and Mohamad Bazzi, Main Author.
