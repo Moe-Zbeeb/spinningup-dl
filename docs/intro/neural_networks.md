@@ -49,6 +49,16 @@ $$
 
 To see why it makes sense, look at the two cases. If $y = 1$, the loss is $-\log \hat{y}$, which is small when $\hat{y}$ is close to 1 and grows without limit as $\hat{y}$ approaches 0. If $y = 0$, the loss is $-\log(1 - \hat{y})$, which is small when $\hat{y}$ is close to 0. Either way, confident wrong answers are punished heavily.
 
+```{admonition} You Should Know
+Since $\hat{y}$ is the model's probability that $y = 1$, the quantity $1 - \hat{y}$ is nothing but the model's probability that $y = 0$. The true label puts probability $y$ on the outcome 1 and $1 - y$ on the outcome 0, so the logistic loss is
+
+$$
+\L(\hat{y}, y) = -\sum_{c \in \{0, 1\}} P_{\text{true}}(c) \log P_{\text{model}}(c),
+$$
+
+which is exactly the [cross-entropy](../background/information_theory.md#cross-entropy) between the true distribution and the model's prediction: the expected number of bits needed to encode the true label using a code built from the model's distribution instead of the optimal one.
+```
+
 The **loss** measures the error on one example. The **cost** averages it over the training set:
 
 $$
