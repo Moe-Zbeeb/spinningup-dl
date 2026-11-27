@@ -3,79 +3,90 @@ import pathlib
 import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from style import BLUE, INK, MAROON
+from style import BLUE, INK, MAROON, ORANGE
 
 OUT = pathlib.Path(__file__).resolve().parents[2] / "docs" / "_static" / "img" / "neural_networks" / "computation_graph.svg"
 MATH = "STIX Two Text, Latin Modern Roman, Times New Roman, Times, serif"
 SANS = "Lato, Helvetica Neue, Helvetica, Arial, sans-serif"
+LOCAL_FILL = "#fdf0e4"
+GLOBAL_FILL = "#fbeef2"
 
 
-def box(x, y, w, h, label, stroke=INK):
-    return [f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="9" fill="#ffffff" stroke="{stroke}" stroke-width="2"/>',
-            f'<text x="{x + w / 2}" y="{y + h / 2 + 7}" font-family="{MATH}" font-style="italic" font-size="21" fill="#000" text-anchor="middle">{label}</text>']
+def box(x, y, w, h, lines, stroke=INK, fill="#ffffff", size=20, dash=None):
+    dash_attr = f' stroke-dasharray="{dash}"' if dash else ""
+    out = [f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="9" fill="{fill}" stroke="{stroke}" stroke-width="2"{dash_attr}/>']
+    for k, line in enumerate(lines):
+        ty = y + h / 2 + (k - (len(lines) - 1) / 2) * (size + 6) + size * 0.35
+        out.append(f'<text x="{x + w / 2}" y="{ty:.1f}" font-family="{MATH}" font-style="italic" font-size="{size}" fill="#000" text-anchor="middle">{line}</text>')
+    return out
 
 
-def head(x2, y2, ux, uy, color):
-    bx, by = x2 - ux * 10, y2 - uy * 10
-    px, py = -uy * 5, ux * 5
-    return f'<path d="M{x2:.1f} {y2:.1f} L{bx + px:.1f} {by + py:.1f} L{bx - px:.1f} {by - py:.1f} z" fill="{color}"/>'
-
-
-def line(x1, y1, x2, y2, color=BLUE):
+def arrow(x1, y1, x2, y2, color, dash=None, width=2.2):
     d = math.hypot(x2 - x1, y2 - y1)
     ux, uy = (x2 - x1) / d, (y2 - y1) / d
-    return [f'<line x1="{x1}" y1="{y1}" x2="{x2 - ux * 9:.1f}" y2="{y2 - uy * 9:.1f}" stroke="{color}" stroke-width="2.2"/>', head(x2, y2, ux, uy, color)]
+    bx, by = x2 - ux * 10, y2 - uy * 10
+    px, py = -uy * 5, ux * 5
+    dash_attr = f' stroke-dasharray="{dash}"' if dash else ""
+    return [f'<line x1="{x1}" y1="{y1}" x2="{bx:.1f}" y2="{by:.1f}" stroke="{color}" stroke-width="{width}"{dash_attr}/>',
+            f'<path d="M{x2:.1f} {y2:.1f} L{bx + px:.1f} {by + py:.1f} L{bx - px:.1f} {by - py:.1f} z" fill="{color}"/>']
 
 
-def curve(x1, y1, cx, cy, x2, y2, color=MAROON):
-    d = math.hypot(x2 - cx, y2 - cy)
-    ux, uy = (x2 - cx) / d, (y2 - cy) / d
-    return [f'<path d="M{x1} {y1} Q{cx} {cy} {x2 - ux * 9:.1f} {y2 - uy * 9:.1f}" fill="none" stroke="{color}" stroke-width="2.2" stroke-dasharray="7 5"/>', head(x2, y2, ux, uy, color)]
-
-
-def label(x, y, text, color=MAROON, size=17, anchor="middle"):
-    return [f'<text x="{x}" y="{y}" font-family="{MATH}" font-style="italic" font-size="{size}" fill="{color}" text-anchor="{anchor}">{text}</text>']
-
-
-def frac(x, y, num, den, color=MAROON, size=16):
-    return [f'<text x="{x}" y="{y - 6}" font-family="{MATH}" font-style="italic" font-size="{size}" fill="{color}" text-anchor="middle">{num}</text>',
-            f'<line x1="{x - 16}" y1="{y}" x2="{x + 16}" y2="{y}" stroke="{color}" stroke-width="1.2"/>',
-            f'<text x="{x}" y="{y + 16}" font-family="{MATH}" font-style="italic" font-size="{size}" fill="{color}" text-anchor="middle">{den}</text>']
+def band(y, h, title, color):
+    return [f'<rect x="8" y="{y}" width="1084" height="{h}" rx="12" fill="{color}" fill-opacity="0.05"/>',
+            f'<text x="22" y="{y + 21}" font-family="{SANS}" font-size="15" font-weight="700" fill="{color}">{title}</text>']
 
 
 def main():
-    W, H = 1000, 380
-    body = []
-    body += box(30, 60, 60, 44, "w")
-    body += box(30, 158, 60, 44, "x")
-    body += box(30, 256, 60, 44, "b")
-    body += box(200, 158, 170, 44, "z = w<tspan font-size='14' dy='-8'>⊤</tspan><tspan dy='8'>x + b</tspan>")
-    body += box(490, 158, 130, 44, "a = σ(z)")
-    body += box(800, 158, 130, 44, "ℒ(a, y)")
-    body += box(835, 290, 60, 44, "y")
-    body += line(90, 82, 200, 172)
-    body += line(90, 180, 200, 180)
-    body += line(90, 278, 200, 188)
-    body += line(370, 180, 490, 180)
-    body += line(620, 180, 800, 180)
-    body += line(865, 290, 865, 202)
-    body += curve(800, 166, 710, 95, 620, 166)
-    body += label(710, 116, "∂ℒ / ∂a = −y / a + (1 − y) / (1 − a)", size=18)
-    body += curve(490, 166, 430, 105, 370, 166)
-    body += label(430, 124, "∂a / ∂z = a(1 − a)", size=18)
-    body += label(285, 236, "dz = a − y", size=19)
-    body += curve(212, 158, 160, 70, 90, 70)
-    body += label(155, 52, "dw = x dz", size=18)
-    body += curve(212, 202, 160, 290, 90, 290)
-    body += label(155, 328, "db = dz", size=18)
-    body.append(f'<line x1="250" y1="360" x2="290" y2="360" stroke="{BLUE}" stroke-width="2.2"/>')
-    body.append(f'<text x="298" y="365" font-family="{SANS}" font-size="15" fill="{INK}">forward pass: compute the values</text>')
-    body.append(f'<line x1="560" y1="360" x2="600" y2="360" stroke="{MAROON}" stroke-width="2.2" stroke-dasharray="7 5"/>')
-    body.append(f'<text x="608" y="365" font-family="{SANS}" font-size="15" fill="{INK}">backward pass: chain rule</text>')
+    W, H = 1100, 610
+    b = []
+    b += band(30, 210, "Forward pass: compute the values", BLUE)
+    b += band(252, 96, "Local gradients: each node on its own", ORANGE)
+    b += [f'<rect x="8" y="360" width="1084" height="192" rx="12" fill="{MAROON}" fill-opacity="0.05"/>',
+          f'<text x="1078" y="540" font-family="{SANS}" font-size="15" font-weight="700" fill="{MAROON}" text-anchor="end">Global gradients: ∂ℒ / ∂(variable) = upstream global × local</text>']
+
+    b += box(30, 80, 60, 40, ["w"])
+    b += box(30, 140, 60, 40, ["x"])
+    b += box(30, 200, 60, 40, ["b"], stroke=INK)
+    b += box(220, 140, 180, 40, ["z = w<tspan font-size='13' dy='-8'>⊤</tspan><tspan dy='8'>x + b</tspan>"])
+    b += box(520, 140, 140, 40, ["a = σ(z)"])
+    b += box(870, 140, 140, 40, ["ℒ(a, y)"])
+    b += box(910, 60, 60, 36, ["y"], size=18)
+    b += arrow(90, 100, 220, 152, BLUE)
+    b += arrow(90, 160, 220, 160, BLUE)
+    b += arrow(90, 220, 220, 168, BLUE)
+    b += arrow(400, 160, 520, 160, BLUE)
+    b += arrow(660, 160, 870, 160, BLUE)
+    b += arrow(940, 96, 940, 140, BLUE)
+
+    b += box(205, 286, 210, 50, ["∂z/∂w = x,  ∂z/∂b = 1"], stroke=ORANGE, fill=LOCAL_FILL, size=17)
+    b += box(490, 286, 200, 50, ["∂a/∂z = a(1 − a)"], stroke=ORANGE, fill=LOCAL_FILL, size=17)
+    b += box(790, 286, 290, 50, ["∂ℒ/∂a = −y/a + (1 − y)/(1 − a)"], stroke=ORANGE, fill=LOCAL_FILL, size=17)
+    for cx in (310, 590, 940):
+        b += [f'<line x1="{cx}" y1="180" x2="{cx}" y2="286" stroke="{ORANGE}" stroke-width="1.6" stroke-dasharray="3 3"/>']
+
+    b += box(690, 400, 300, 64, ["∂ℒ/∂a = 1 · ∂ℒ/∂a", "= −y/a + (1 − y)/(1 − a)"], stroke=MAROON, fill=GLOBAL_FILL, size=17, dash="7 4")
+    b += box(370, 400, 250, 64, ["∂ℒ/∂z = ∂ℒ/∂a · ∂a/∂z", "= a − y"], stroke=MAROON, fill=GLOBAL_FILL, size=17, dash="7 4")
+    b += box(30, 400, 250, 64, ["∂ℒ/∂w = ∂ℒ/∂z · ∂z/∂w", "= x (a − y)"], stroke=MAROON, fill=GLOBAL_FILL, size=17, dash="7 4")
+    b += box(30, 478, 250, 64, ["∂ℒ/∂b = ∂ℒ/∂z · ∂z/∂b", "= a − y"], stroke=MAROON, fill=GLOBAL_FILL, size=17, dash="7 4")
+
+    b += arrow(690, 432, 620, 432, MAROON, dash="7 5")
+    b += arrow(370, 432, 280, 432, MAROON, dash="7 5")
+    b += arrow(370, 444, 280, 508, MAROON, dash="7 5")
+    b += arrow(940, 336, 900, 400, ORANGE, width=1.8)
+    b += arrow(590, 336, 530, 400, ORANGE, width=1.8)
+    b += arrow(250, 336, 200, 400, ORANGE, width=1.8)
+
+    b += [f'<line x1="90" y1="582" x2="130" y2="582" stroke="{BLUE}" stroke-width="2.2"/>',
+          f'<text x="138" y="587" font-family="{SANS}" font-size="15" fill="{INK}">forward pass</text>',
+          f'<rect x="270" y="573" width="34" height="18" rx="4" fill="{LOCAL_FILL}" stroke="{ORANGE}" stroke-width="1.8"/>',
+          f'<text x="312" y="587" font-family="{SANS}" font-size="15" fill="{INK}">local gradient: depends only on that node</text>',
+          f'<line x1="660" y1="582" x2="700" y2="582" stroke="{MAROON}" stroke-width="2.2" stroke-dasharray="7 5"/>',
+          f'<text x="708" y="587" font-family="{SANS}" font-size="15" fill="{INK}">global gradient: flows back from the loss</text>']
+
     svg = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" role="img" aria-labelledby="t d">',
-           '<title id="t">Computation graph of logistic regression</title>',
-           '<desc id="d">Inputs w, x, and b feed z equals w transpose x plus b, which feeds a equals sigma of z, which feeds the loss L of a and y. Solid blue arrows run forward from left to right. Dashed maroon arrows run backward from the loss, labeled with the derivative of the loss with respect to a, the derivative of a with respect to z, dz equals a minus y, dw equals x dz, and db equals dz.</desc>']
-    OUT.write_text("\n".join(svg + body + ["</svg>"]) + "\n")
+           '<title id="t">Local and global gradients in the computation graph of logistic regression</title>',
+           '<desc id="d">Three bands. The forward pass computes z from w, x, and b, then a equals sigma of z, then the loss. Under each node, a local gradient box gives the derivative of that node alone: dz/dw equals x and dz/db equals 1, da/dz equals a times one minus a, and dL/da. Below, global gradient boxes flow backward from the loss, each the upstream global gradient times the local gradient: dL/da, then dL/dz equals a minus y, then dL/dw equals x times a minus y and dL/db equals a minus y.</desc>']
+    OUT.write_text("\n".join(svg + b + ["</svg>"]) + "\n")
 
 
 if __name__ == "__main__":

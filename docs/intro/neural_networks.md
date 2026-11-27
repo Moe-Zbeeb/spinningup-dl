@@ -91,10 +91,10 @@ The gradients come from the **chain rule**, working backward through the computa
 That last result is worth remembering: the gradient at $z$ is simply the prediction minus the label. From it, since $z = w^{\top} x + b$, we get $dw = x \, dz$ and $db = dz$. This backward pass through the computation is a small instance of the [backward propagation](#backward-propagation) used for whole networks.
 
 ```{figure} ../_static/img/neural_networks/computation_graph.svg
-:alt: Inputs w, x, and b feed z equals w transpose x plus b, which feeds a equals sigma of z, which feeds the loss L of a and y. Solid blue arrows run forward from left to right. Dashed maroon arrows run backward from the loss, labeled with the derivative of the loss with respect to a, the derivative of a with respect to z, dz equals a minus y, dw equals x dz, and db equals dz.
+:alt: Three bands. The forward pass computes z from w, x, and b, then a equals sigma of z, then the loss. Under each node, a local gradient gives the derivative of that node alone. Below, global gradients flow backward from the loss, each equal to the upstream global gradient times the local gradient, ending with dL/dw equals x times a minus y and dL/db equals a minus y.
 :width: 100%
 
-The computation graph of logistic regression for one example. The forward pass, solid and blue, computes $z$, then $a$, then the loss. The backward pass, dashed and red, applies the chain rule from the loss back to the parameters.
+Local and global gradients for one example. The forward pass, top, computes the values. Each node's **local gradient**, middle, is the derivative of its output with respect to its input, and depends only on that node. The **global gradient** of the loss with respect to a variable, bottom, is the upstream global gradient times the local gradient, so it flows back from the loss one node at a time.
 ```
 
 ### Vectorization
