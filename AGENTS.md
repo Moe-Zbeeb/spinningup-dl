@@ -137,7 +137,7 @@ If the notes use notation that is not in this table, typeset it as the notes wri
 
 - "You Should Know" is the default box. Use it for a convention the reader will meet elsewhere, a caveat, a common mistake, or a pointer to further reading. Write it as ` ```{admonition} You Should Know `.
 - A box may carry its own title when it defines a named thing, as Spinning Up does with "Categorical Policies".
-- An optional derivation that the main text can skip, such as working out a gradient the text only states, goes in a `{sidebar}` box titled "(Optional) ...", placed at the top of its section so it floats to the right of the text.
+- An optional derivation that the main text can skip, such as working out a gradient the text only states, goes in a `{sidebar}` box titled "(Optional) ...", placed at the top of its section. On a wide screen it sits in the right margin beside the section, outside the text column; on a narrower one it is a full-width box at the top of the section.
 - `{note}`, `{tip}`, and `{warning}` exist but are rare. A page with a box in every section has too many.
 
 ### Code

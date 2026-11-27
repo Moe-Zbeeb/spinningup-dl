@@ -199,9 +199,28 @@ a:visited {
 }
 
 .rst-content .sidebar {
+  float: none;
+  width: 100%;
+  margin: 0 0 24px 0;
   background-color: var(--color--warmgraylight);
   border: none;
   padding: 12px;
+}
+
+@media screen and (min-width: 1440px) {
+  .wy-nav-content:has(.sidebar) {
+    margin-left: min(calc((100% - 800px) / 2), calc(100% - 1140px));
+    margin-right: auto;
+  }
+
+  .rst-content .sidebar {
+    float: right;
+    clear: right;
+    width: 280px;
+    margin: 0 -320px 24px 0;
+    background-color: #fcfcfc;
+    border: 1px solid #e1e4e5;
+  }
 }
 
 .rst-content .sidebar .sidebar-title {

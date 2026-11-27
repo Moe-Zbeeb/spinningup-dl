@@ -68,7 +68,7 @@ $$
 Subtracting the same constant from every score leaves the output unchanged.
 ```
 
-An optional derivation that the main text can skip goes in a sidebar, which floats to the right of the text. Place it at the top of its section and start its title with "(Optional)".
+An optional derivation that the main text can skip goes in a sidebar. On a wide screen it sits in the right margin, outside the text column. Place it at the top of its section and start its title with "(Optional)".
 
 ```{sidebar} (Optional) Deriving the Softmax Shift
 Subtracting $c$ from every score multiplies the numerator and the denominator by the same factor $e^{-c}$:
@@ -78,7 +78,7 @@ $$
 $$
 ```
 
-The text beside the sidebar flows around it. On a narrow screen, the sidebar takes the full width and sits above the text instead.
+The text runs at full width beside it. On a narrower screen, the sidebar is a full-width box above the text instead.
 
 ```{note}
 Notes are asides: useful, but the page reads fine without them.
