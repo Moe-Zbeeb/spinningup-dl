@@ -87,3 +87,51 @@ Using the wrong code always costs extra bits, and using the right one costs exac
 Log loss is often called cross-entropy loss. Indeed, it is the cross-entropy between the distribution of the true labels and the predictions.
 ```
 
+## Optimization
+
+Training a neural network means finding the parameters that make its cost as small as possible. We collect all the parameters in one vector $\theta$, write the cost as $J(\theta)$, and look for the $\theta$ that minimizes it. This section covers what we are looking for and the two classic ways of looking.
+
+### Local and Global Minima
+
+A **global minimum** is a point $\theta^*$ where the cost is as low as it gets anywhere: $J(\theta^*) \leq J(\theta)$ for every $\theta$. A **local minimum** is a point that is lower than every point near it, but not necessarily lower than points farther away, like a dip in a hillside that is not the bottom of the valley.
+
+For a **convex** cost, shaped like a single bowl, every local minimum is a global minimum, so any method that goes downhill finds the best answer. The cost of [logistic regression](../intro/neural_networks.md#the-loss-and-cost-functions) is convex. The costs of neural networks are not: they have many local minima and saddle points, and training settles for a point that is good enough. In large networks this works better than you might expect, as [Part 2](../intro/improving_networks.md#local-optima-and-saddle-points) explains.
+
+### The Gradient
+
+For a function of one variable, the derivative $J'(\theta)$ is the slope: how fast $J$ changes as $\theta$ increases. For a function of many variables, the **gradient** collects the slope along each one into a vector of partial derivatives:
+
+$$
+\nabla J(\theta) = \left( \frac{\partial J}{\partial \theta_1}, \frac{\partial J}{\partial \theta_2}, \dots, \frac{\partial J}{\partial \theta_n} \right),
+$$
+
+where $n$ is the number of parameters. The gradient points in the direction in which $J$ increases fastest, and its length says how steep that increase is. At a minimum, the cost is flat in every direction, so the gradient is zero. The converse does not hold: the gradient is also zero at maxima and at saddle points.
+
+### Gradient Descent
+
+Since the gradient points uphill, stepping against it goes downhill. **Gradient descent** repeats that step:
+
+$$
+\theta \leftarrow \theta - \alpha \, \nabla J(\theta),
+$$
+
+where the **learning rate** $\alpha$ sets the size of each step. A learning rate that is too small makes progress slow, and one that is too large overshoots the minimum and can diverge. Gradient descent uses only first derivatives, which backpropagation computes cheaply even for millions of parameters, so it and its variants train every model in this course.
+
+### Newton's Method
+
+Gradient descent knows the slope but not the curvature, so it takes the same size of step on a gentle slope as on a sharp bend. **Newton's method** also uses second derivatives. In one variable, it approximates $J$ near $\theta$ by a parabola and jumps straight to the parabola's minimum:
+
+$$
+\theta \leftarrow \theta - \frac{J'(\theta)}{J''(\theta)}.
+$$
+
+Where the cost curves gently, $J''(\theta)$ is small and the step is long; where it curves sharply, the step is short. With many variables, the second derivatives form the **Hessian**, the $n \times n$ matrix $\nabla^2 J(\theta)$ whose entry $(j, k)$ is $\frac{\partial^2 J}{\partial \theta_j \, \partial \theta_k}$, and the update becomes
+
+$$
+\theta \leftarrow \theta - \left(\nabla^2 J(\theta)\right)^{-1} \nabla J(\theta).
+$$
+
+On a quadratic cost, Newton's method reaches the minimum in a single step: for $J(\theta) = (\theta - 3)^2$, starting from $\theta = 10$, the update gives $10 - \frac{14}{2} = 3$. It usually needs far fewer steps than gradient descent.
+
+The catch is the Hessian. A network with a million parameters has a Hessian with a million squared, $10^{12}$, entries, far too many to store, let alone invert. Newton's method can also be pulled toward maxima and saddle points, where the Hessian is not positive definite. This is why deep learning trains with gradient descent and its variants, such as [Adam](../intro/improving_networks.md#adam-adaptive-moment-estimation), which rescales each parameter's step using running averages of its gradients, a cheap stand-in for some of what curvature information provides.
+
