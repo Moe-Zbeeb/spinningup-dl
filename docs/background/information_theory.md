@@ -4,11 +4,12 @@
 :depth: 2
 ```
 
-```{admonition} Coming soon
-This page is being written one section at a time. More sections will be added below.
-```
+Welcome to the background for the course! Most of the cost functions used to train neural networks come from a few ideas in information theory, and training itself is an optimization problem. This page introduces those ideas before you meet them in the [Introduction to Deep Learning](../intro/neural_networks.md), so that the cost functions there look like natural choices rather than formulas to memorize. On this page, we aim to acquaint you with
 
-Welcome to the background for the course! Most of the cost functions used to train neural networks come from a few ideas in information theory, and training itself is an optimization problem. This page introduces those ideas before you meet them in the [Introduction to Deep Learning](../intro/neural_networks.md), so that the cost functions there look like natural choices rather than formulas to memorize.
+- information content, the surprise of a single outcome,
+- entropy, the expected surprise of a random variable, and how it measures the bits needed to encode it,
+- cross-entropy, the cost of using the wrong distribution, which is the loss used to train classifiers,
+- and the basics of optimization: minima, gradients, gradient descent, and Newton's method.
 
 ## Information Content
 
@@ -134,4 +135,8 @@ $$
 On a quadratic cost, Newton's method reaches the minimum in a single step: for $J(\theta) = (\theta - 3)^2$, starting from $\theta = 10$, the update gives $10 - \frac{14}{2} = 3$. It usually needs far fewer steps than gradient descent.
 
 The catch is the Hessian. A network with a million parameters has a Hessian with a million squared, $10^{12}$, entries, far too many to store, let alone invert. Newton's method can also be pulled toward maxima and saddle points, where the Hessian is not positive definite. This is why deep learning trains with gradient descent and its variants, such as [Adam](../intro/improving_networks.md#adam-adaptive-moment-estimation), which rescales each parameter's step using running averages of its gradients, a cheap stand-in for some of what curvature information provides.
+
+## Recap
+
+On this page, you met the ideas behind the cost functions used throughout the course. Information content measures how surprising an outcome is, entropy is the surprise you expect on average, and in bits it is the length of the best possible code. Cross-entropy is the cost of coding with the wrong distribution; it is smallest when the prediction matches the truth, which is why it is the loss used to train classifiers. Training then means minimizing that loss: gradient descent follows the gradient downhill, while Newton's method also uses curvature but is too expensive for large networks. You are ready to start [Part 1](../intro/neural_networks.md), which builds a neural network and trains it with exactly these tools.
 
