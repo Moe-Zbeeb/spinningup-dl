@@ -116,6 +116,8 @@ The notes use plain-text shorthand. Typeset it as follows, on every page.
 | `σ(z)`, `tanh(z)` | $\sigma(z)$, $\tanh(z)$ | The sigmoid and tanh activation functions |
 | `ReLU(z)`, `LReLU(z)` | $\mathrm{ReLU}(z)$, $\mathrm{LReLU}(z)$ | The ReLU and leaky ReLU activation functions |
 | `σ'(z)`, `ReLU'(z)` | $\sigma'(z)$, $\mathrm{ReLU}'(z)$ | The derivative of an activation function |
+| `X`, `x_i`, `p_X(x_i) = p_i` | $X$, $x_i$, $p_X(x_i) = p_i$ | A random variable, one of its outcomes, and that outcome's probability (on the background page) |
+| `I(p_i)` | $I(p_i)$ | The information content of an outcome with probability $p_i$ |
 | `x(i)`, `y(i)` | $x^{(i)}$, $y^{(i)}$ | Training example $i$ |
 | `x<t>`, `a<t>` | $x^{\langle t \rangle}$, $a^{\langle t \rangle}$ | Time step $t$ of a sequence |
 | `X{t}`, `Y{t}` | $X^{\{t\}}$, $Y^{\{t\}}$ | Mini-batch $t$ |
@@ -166,4 +168,4 @@ If the notes use notation that is not in this table, typeset it as the notes wri
 
 ## Publishing
 
-The site deploys from `main` through `.github/workflows/deploy.yml`. Publishing is a commit and a push to `main`. Do it when the maintainer asks you to publish, or has told you to publish each section as it is finished. Write the commit message as one line that says what was added, such as "Write the Dropout section of Part 2".
+The site deploys from `main` through `.github/workflows/deploy.yml`. Publishing is a commit and a push to `main`. The maintainer reviews work as it is committed, so commit and push every finished change, after `make check` passes, without waiting to be asked. Write the commit message as one line that says what was added, such as "Write the Dropout section of Part 2".
