@@ -118,6 +118,8 @@ The notes use plain-text shorthand. Typeset it as follows, on every page.
 | `σ'(z)`, `ReLU'(z)` | $\sigma'(z)$, $\mathrm{ReLU}'(z)$ | The derivative of an activation function |
 | `X`, `x_i`, `p_X(x_i) = p_i` | $X$, $x_i$, $p_X(x_i) = p_i$ | A random variable, one of its outcomes, and that outcome's probability (on the background page) |
 | `I(p_i)` | $I(p_i)$ | The information content of an outcome with probability $p_i$ |
+| `H(X)`, `H(p)`, `K` | $H(X)$, $H(p)$, $K$ | The entropy of a random variable, or of its distribution $p$; the number of outcomes |
+| `l_i` | $\ell_i$ | The optimal code length, in bits, of an outcome with probability $p_i$ |
 | `x(i)`, `y(i)` | $x^{(i)}$, $y^{(i)}$ | Training example $i$ |
 | `x<t>`, `a<t>` | $x^{\langle t \rangle}$, $a^{\langle t \rangle}$ | Time step $t$ of a sequence |
 | `X{t}`, `Y{t}` | $X^{\{t\}}$, $Y^{\{t\}}$ | Mini-batch $t$ |
