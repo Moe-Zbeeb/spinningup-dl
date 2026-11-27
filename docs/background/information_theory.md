@@ -60,3 +60,30 @@ $$
 
 where $\ell_i$ is the length, in bits, of the code for an outcome with probability $p_i$. This is exactly the information content $I(p_i)$ measured in bits: the more surprising an outcome, the longer its code.
 
+Averaged over the outcomes, weighting each code length by how often its outcome occurs, these optimal codes use $\sum_i p_i \ell_i = -\sum_i p_i \log_2(p_i)$ bits per observation, which is the entropy of $X$ measured in bits. So entropy is the expected number of bits needed to encode an observation of $X$ under the optimal coding scheme.
+
+## Cross-Entropy
+
+We saw that entropy is the expected number of bits needed to encode an observation of $X$ under the optimal coding scheme. In contrast, **cross-entropy** is the expected number of bits needed to encode an observation of $X$ under the wrong coding scheme.
+
+Call $q$ the wrong probability distribution that is used to build the coding scheme. Then we use $-\log(q_i)$ bits to encode the $i$-th possible value of $X$. Although the code is built from $q$, the observations are still distributed according to $p$, so we take the expected value over $p$:
+
+$$
+H(p, q) = \E_{p}\left[I(q_i)\right] = -\sum_{i} p_i \log(q_i).
+$$
+
+From this interpretation, it follows that
+
+$$
+\begin{aligned}
+H(p, q) &> H(p) \quad \text{for all } q \neq p, \\
+H(p, p) &= H(p).
+\end{aligned}
+$$
+
+Using the wrong code always costs extra bits, and using the right one costs exactly the entropy.
+
+```{admonition} Side Note
+Log loss is often called cross-entropy loss. Indeed, it is the cross-entropy between the distribution of the true labels and the predictions.
+```
+
