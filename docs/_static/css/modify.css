@@ -202,32 +202,50 @@ a:visited {
   float: none;
   width: 100%;
   margin: 0 0 24px 0;
+  padding: 0 16px 14px;
+  font-size: 14px;
+  line-height: 22px;
   background-color: var(--color--warmgraylight);
   border: none;
-  padding: 12px;
+  border-radius: 6px;
+  overflow: hidden;
 }
 
-@media screen and (min-width: 1440px) {
+.rst-content .sidebar p {
+  font-size: 100%;
+  margin-bottom: 10px;
+}
+
+.rst-content .sidebar .sidebar-title {
+  font-family: "Lato", "proxima-nova", "Helvetica Neue", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 20px;
+  color: #fff;
+  background-color: var(--color--mediumblue);
+  margin: 0 -16px 14px;
+  padding: 10px 16px;
+}
+
+.rst-content .sidebar mjx-container[display="true"] {
+  margin: 6px 0 10px !important;
+}
+
+@media screen and (min-width: 1420px) {
   .wy-nav-content:has(.sidebar) {
-    margin-left: min(calc((100% - 800px) / 2), calc(100% - 1140px));
+    --note-width: min(300px, calc(100vw - 1171px));
+    margin-left: max(0px, min(calc((100% - 800px) / 2), calc(100% - 856px - var(--note-width))));
     margin-right: auto;
+    padding-right: 52px;
   }
 
   .rst-content .sidebar {
     float: right;
     clear: right;
-    width: 280px;
-    margin: 0 -320px 24px 0;
+    width: var(--note-width);
+    margin: 0 calc(-84px - var(--note-width)) 24px 0;
     background-color: #fcfcfc;
-    border: 1px solid #e1e4e5;
+    box-shadow: 0 1px 3px rgba(64, 68, 82, 0.12), 0 4px 14px rgba(64, 68, 82, 0.08);
   }
-}
-
-.rst-content .sidebar .sidebar-title {
-  font-family: "Lato", "proxima-nova", "Helvetica Neue", Arial, sans-serif;
-  color: #fff;
-  background-color: var(--color--mediumblue);
-  margin: -12px -12px 12px;
 }
 
 .rst-content dl:not(.docutils):not(.simple) dt {

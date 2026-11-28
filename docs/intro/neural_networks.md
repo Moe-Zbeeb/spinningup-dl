@@ -83,15 +83,22 @@ where $\alpha$ is the learning rate. The derivative says which way the cost incr
 ### Computing the Gradients
 
 ```{sidebar} (Optional) Deriving the Cross-Entropy Gradient
-Here we derive the three steps of this section in full, with $a = \sigma(z) = \frac{1}{1 + e^{-z}}$, the loss $\L = -\left(y \log a + (1 - y) \log(1 - a)\right)$, and $\log$ the natural logarithm.
+Here we derive the three steps of this section in full. With $\log$ the natural logarithm, we start from
 
-**Step 1: The Loss.** Since the derivative of $\log a$ is $\frac{1}{a}$ and that of $\log(1 - a)$ is $-\frac{1}{1 - a}$,
+$$
+\begin{aligned}
+a &= \sigma(z) = \frac{1}{1 + e^{-z}}, \\
+\L &= -y \log a - (1 - y) \log(1 - a).
+\end{aligned}
+$$
+
+**Step 1: The Loss.** The derivative of $\log a$ is $1/a$, and that of $\log(1 - a)$ is $-1/(1 - a)$, so
 
 $$
 \frac{\partial \L}{\partial a} = -\frac{y}{a} + \frac{1 - y}{1 - a}.
 $$
 
-**Step 2: The Sigmoid.** Differentiating $(1 + e^{-z})^{-1}$,
+**Step 2: The Sigmoid.** Differentiating $(1 + e^{-z})^{-1}$ gives
 
 $$
 \begin{aligned}
@@ -101,7 +108,11 @@ $$
 \end{aligned}
 $$
 
-since $\frac{e^{-z}}{1 + e^{-z}} = 1 - \frac{1}{1 + e^{-z}} = 1 - a$.
+since the second factor is
+
+$$
+\frac{e^{-z}}{1 + e^{-z}} = 1 - \frac{1}{1 + e^{-z}} = 1 - a.
+$$
 
 **Step 3: The Chain Rule.** Multiplying the two, the denominators cancel:
 

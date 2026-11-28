@@ -137,8 +137,44 @@ If the notes use notation that is not in this table, typeset it as the notes wri
 
 - "You Should Know" is the default box. Use it for a convention the reader will meet elsewhere, a caveat, a common mistake, or a pointer to further reading. Write it as ` ```{admonition} You Should Know `.
 - A box may carry its own title when it defines a named thing, as Spinning Up does with "Categorical Policies".
-- An optional derivation that the main text can skip, such as working out a gradient the text only states, goes in a `{sidebar}` box titled "(Optional) ...", placed at the top of its section. On a wide screen it sits in the right margin beside the section, outside the text column; on a narrower one it is a full-width box at the top of the section.
+- An optional derivation that the main text can skip goes in a margin note. See the next section.
 - `{note}`, `{tip}`, and `{warning}` exist but are rare. A page with a box in every section has too many.
+
+### Margin Notes
+
+A margin note holds working that a reader can skip without losing the thread, such as the full derivation of a gradient that the section only states. On a screen at least 1420 pixels wide it sits in the right margin, outside the text column, beside the start of its section; on a narrower screen it becomes a full-width box at the top of the section. Either way, the section must read completely without it.
+
+````markdown
+### Computing the Gradients
+
+```{sidebar} (Optional) Deriving the Cross-Entropy Gradient
+Here we derive the three steps of this section in full, starting from
+
+$$
+a = \sigma(z) = \frac{1}{1 + e^{-z}},
+$$
+
+where ...
+
+**Step 1: The Loss.** The derivative of $\log a$ is $1/a$, so
+
+$$
+\frac{\partial \L}{\partial a} = -\frac{y}{a} + \frac{1 - y}{1 - a}.
+$$
+```
+
+The gradients come from the **chain rule**, ...
+````
+
+- **When.** Use a margin note only when the maintainer asks for one, or when the notes mark a passage as optional. At most one per `###` section, and only a few per page.
+- **Where.** The ` ```{sidebar} ` block goes directly under the section's heading, before its first paragraph, so the note lines up with the start of the section.
+- **Title.** "(Optional) " followed by a short Title Case label that names what is derived: "(Optional) Deriving the Cross-Entropy Gradient".
+- **Opening.** One sentence that says what the note derives and which statement in the section it backs, then the starting definitions, so the note reads on its own.
+- **Steps.** Break the working into steps, each a paragraph that opens with a bold label, "**Step 1: The Loss.**", says in one sentence what is done, and ends with a display equation. Each step's result is the input to the next, and the last step ends on the result the section states.
+- **Width.** The note is about 300 pixels wide, so keep it narrow. Put every equation that has a fraction in display math, not inline, and write any inline fraction with a slash, as in $1/a$. Break a long derivation into an `aligned` block with one `=` per line, and keep each line shorter than about 30 characters of math.
+- **Contents.** Text and math only: no figures, code, tables, footnotes, or nested boxes. Use the same symbols as the section, and define every symbol the note uses.
+- **Faithfulness.** If the derivation is not in the notes, report all of it to the maintainer as added, under step 5 of the workflow above.
+- **Check.** Look at the note at both layouts: a wide window (1500 pixels or more) and a narrow one (below 1420 pixels). No equation should need a horizontal scroll bar.
 
 ### Code
 
